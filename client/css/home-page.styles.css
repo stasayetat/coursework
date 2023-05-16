@@ -1,0 +1,95 @@
+body {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.header_container {
+    width: 290px; /* задаємо ширину */
+    height: 55px; /* задаємо висоту */
+    display: flex; /* встановлюємо flexbox */
+    justify-content: center; /* вирівнюємо по горизонталі по центру */
+    align-items: center; /* вирівнюємо по вертикалі по центру */
+}
+
+.header_container object {
+    width: 100%; /* розтягуємо svg на всю ширину батьківського елемента */
+    height: auto; /* пропорційно змінюємо висоту */
+}
+
+.header_container.icon object {
+    width: 390px;
+    height: 74px;
+}
+
+.icon_fif {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 50px; /* задайте розмір кнопки відповідно до розмірів зображення */
+    height: 50px;
+}
+
+.icon_user {
+    width: 125px; /* задайте розмір кнопки відповідно до розмірів зображення */
+    height: 125px;
+}
+
+ul li input{
+    /*margin-bottom: 10px;*/
+    /*margin-top: 10px;*/
+    margin-right: 10px;
+}
+
+.list-inline-item {
+    padding-top: 20px;
+}
+
+.nav-all-items li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.nav-all-items li:hover{
+    background: green;
+}
+
+.logo_icon {
+    width: 300px;
+    height: auto;
+    max-width: 390px;
+    max-height: 73px;
+}
+
+.userName{
+    display: inline-block; /* встановлюємо властивість inline-block, щоб можна було встановлювати ширину */
+    width: 100%; /* встановлюємо ширину span на 100%, щоб він не переносився на новий рядок */
+    word-break: break-all; /* дозволяємо тексту переноситися на новий рядок, якщо він не поміщається */
+}
+
+#itemsCarousel {
+    padding-bottom: 25px;
+}
+
+.card.item:hover {
+    border: 0;
+    z-index: 1;
+}
+
+
+.itemTitle {
+    text-decoration:none;
+    color: #000;
+}
+
+.footer {
+    background-color: #ededed;
+}
+
+.footer_icon {
+    width: 27px;
+    height: 27px;
+}
+
+.footer_big_icon {
+    width: 30px;
+    height: 30px;
+}

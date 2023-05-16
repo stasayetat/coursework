@@ -1,0 +1,49 @@
+<svg width="390" height="73" viewBox="0 0 390 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line y1="5.25" x2="20" y2="5.25" stroke="black" stroke-width="9.5"/>
+    <line y1="33.25" x2="20" y2="33.25" stroke="black" stroke-width="9.5"/>
+    <line y1="64" x2="20.5" y2="64" stroke="black" stroke-width="10"/>
+    <path d="M17.5 10C14.5 9.5 20 0.5 20 0.5C28 1.5 31 5 32.5 13C32.5 13 22.5 18 22 15.5C21.5 13 20.5 10.5 17.5 10Z" fill="black"/>
+    <path d="M22 22H32.5C32.4088 28.3146 29.7807 31.205 20 34.5L17 28.5C20.5 27.5 21.6819 25.9483 22 22Z" fill="black"/>
+    <path d="M19 38V32.5C30.0773 30.6029 34.2073 38.3343 33.5 48.9999L23 49C23.1446 42.0248 22.8183 39.6968 19 38Z" fill="black"/>
+    <path d="M22.9999 48.5002L33.4999 49.0001C33.9734 61.9407 30.9551 66.1697 20.5 69L16.9999 59.4032C22.0098 58.8897 23.5835 57.5806 22.9999 48.5002Z" fill="black"/>
+    <path d="M22 13H32.5V22H22V13Z" fill="black"/>
+    <line x1="45" y1="2.18557e-07" x2="45" y2="57" stroke="black" stroke-width="10"/>
+    <line x1="67" y1="2.18557e-07" x2="67" y2="57" stroke="black" stroke-width="10"/>
+    <path d="M45 54C45 70 67 70 67 54" stroke="black" stroke-width="10"/>
+    <line x1="85" y1="2.18557e-07" x2="85" y2="69" stroke="black" stroke-width="10"/>
+    <line x1="104" x2="104" y2="69" stroke="black" stroke-width="10"/>
+    <line x1="126" y1="64" x2="99" y2="64" stroke="black" stroke-width="10"/>
+    <line x1="137" y1="2.18557e-07" x2="137" y2="69.0072" stroke="black" stroke-width="10"/>
+    <line x1="141" y1="5" x2="151" y2="5" stroke="black" stroke-width="10"/>
+    <line x1="141" y1="64" x2="151" y2="64" stroke="black" stroke-width="10"/>
+    <path d="M151 5.00082C163.5 4.99631 165.02 63.9999 151 64" stroke="black" stroke-width="10"/>
+    <line x1="177" y1="69" x2="177" y2="31" stroke="black" stroke-width="10"/>
+    <line x1="171" y1="5" x2="190" y2="5" stroke="black" stroke-width="10"/>
+    <line x1="182" y1="36" x2="190" y2="36" stroke="black" stroke-width="10"/>
+    <path d="M190 5C202.244 5 201.754 36 190 36" stroke="black" stroke-width="10"/>
+    <line x1="215" y1="1" x2="215" y2="69" stroke="black" stroke-width="10"/>
+    <line x1="220" y1="6" x2="239" y2="6" stroke="black" stroke-width="10"/>
+    <line x1="220" y1="64" x2="239" y2="64" stroke="black" stroke-width="10"/>
+    <line x1="220" y1="33" x2="239" y2="33" stroke="black" stroke-width="10"/>
+    <line x1="248.055" y1="68.2619" x2="258.055" y2="1.26191" stroke="black" stroke-width="10"/>
+    <line y1="-5" x2="67.7422" y2="-5" transform="matrix(-0.147619 -0.989044 -0.989044 0.147619 268 69)" stroke="black" stroke-width="10"/>
+    <line x1="252" y1="50" x2="268" y2="50" stroke="black" stroke-width="10"/>
+    <path d="M245 53L256.5 45.5L252.5 68.5H243L245 53Z" fill="black"/>
+    <path d="M274 44L265 46L269 69H278.5L274 44Z" fill="black"/>
+    <line x1="254.5" y1="1.6001" x2="266.5" y2="1.6001" stroke="black" stroke-width="2"/>
+    <line x1="289.5" y1="69.0037" x2="289.5" y2="0.996307" stroke="black" stroke-width="10"/>
+    <path d="M308.5 0.5H319.5L294 49V30.5L308.5 0.5Z" fill="black"/>
+    <path d="M299.5 38L306.5 25L320 69H308.5L299.5 38Z" fill="black"/>
+    <path d="M361.5 28L364.5 28.5L340.5 69.5H336.5L361.5 28Z" fill="black"/>
+    <path d="M362.5 30.5L364.5 27.5L390 69.7H386L362.5 30.5Z" fill="black"/>
+    <path d="M340.952 66.7H363.238H373.39H385L388 69.7H336L340.952 66.7Z" fill="black"/>
+    <path d="M361.5 0.5H365V15V30.5L361.5 31V0.5Z" fill="black"/>
+    <path d="M364 0.5H389L386.5 3.5H364V0.5Z" fill="black"/>
+    <path d="M364 18.5H389L386.5 15.5H364V18.5Z" fill="black"/>
+    <path d="M383 3L388.5 1L381.5 10L378 9.5L383 3Z" fill="black"/>
+    <path d="M383 16L388.5 18L381.5 9L378 9.5L383 16Z" fill="black"/>
+    <path d="M367 46L369 48.5L357.5 60L355.5 57.5L367 46Z" fill="black"/>
+    <path d="M366.5 50.5L367 46L374.5 54L372.5 56.5L366.5 50.5Z" fill="black"/>
+    <path d="M375 48L377.5 50.5L372.5 56.5L370 54L375 48Z" fill="black"/>
+    <path d="M349.5 52L351.5 49.5L360 57.5L357.5 60L349.5 52Z" fill="black"/>
+</svg>

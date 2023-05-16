@@ -1,0 +1,26 @@
+.register {
+    width: 360px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 12px;
+    background: #e9ecef;
+}
+
+.register h1 {
+    font-size: 36px;
+
+}
+
+.register form {
+    font-size: 20px;
+}
+
+.register form .form-group {
+    margin-bottom: 12px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

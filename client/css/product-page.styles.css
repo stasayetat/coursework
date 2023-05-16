@@ -9,3 +9,13 @@
 #rateStar {
     display: none;
 }
+
+.card.item:hover {
+    border: 0;
+    z-index: 1;
+}
+
+.itemTitle {
+    text-decoration:none;
+    color: #000;
+}

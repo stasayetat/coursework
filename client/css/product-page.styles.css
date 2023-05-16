@@ -1,0 +1,11 @@
+.star {
+    border: none;
+    background-color: unset;
+}
+
+.star.active {
+    color: gold;
+}
+#rateStar {
+    display: none;
+}

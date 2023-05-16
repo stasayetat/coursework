@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BuildPeak</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/client/src/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/client/src/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/client/src/icon/favicon-16x16.png">
+    <link rel="manifest" href="/client/html/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/client/css/product-page.styles.css">
+    <link rel="stylesheet" href="/client/css/header_footer.styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <ul class="list-inline float-start">
+                <li>
+                    <a href="#" class="navbar-fluid">
+                        <img src="/client/src/img/logo.svg" alt="Logo" class="logo_icon">
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <span class="navbar-text">
+                        <h4>Всі предмети</h4>
+                    </span>
+                </li>
+                <li class="list-inline-item">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </li>
+            </ul>
+            <form class="d-flex flex-fill p-5" role="search">
+                <input type="search" class="form-control rounded-start-pill" type="search" placeholder="Пошук"
+                       aria-label="Search">
+                <input type="image" src="/client/src/img/magnifying-glass-solid.svg" class="btn btn-outline-success rounded-end-pill icon_fif"/>
+            </form>
+            <ul class="list-inline float-end">
+                <li class="nav-item">
+                    <input class="icon_fif" type="image" src="/client/src/img/circle-user-solid.svg"/>
+                    <!--Максимум приблизно 15 символів, так що краще використати userName-->
+                    <span class="userName" >Username</span>
+                </li>
+                <li class="nav-item list-inline-item">
+                    <input href="#" class="icon_fif" type="image" src="/client/src/img/heart-solid.svg"/>
+                </li>
+                <li class="nav-item list-inline-item position-relative">
+                    <input href="#" class="icon_fif" type="image" src="/client/src/img/cart-shopping-solid.svg">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3">
+                        12
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="collapse navbar-collapse position-absolute z-3" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-light nav-all-items border border-secondary">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">LinkLinkLinkLink</a>
+            </li>
+        </ul>
+    </div>
+</header>
+<!--Фото та кнопки до предмета-->
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-6">
+            <div id="carouselImageItem" class="carousel slide carousel-dark">
+                <div class="carousel-inner bg-secondary border">
+                    <div class="carousel-item active itemImage">
+                        <img src="/client/src/img/image.webp" alt="Logo" class="d-block w-100" width="375" height="475">
+                    </div>
+                    <div class="carousel-item itemImage">
+                        <img src="/client/src/img/25957_2.jpeg" alt="Logo" class="d-block w-100" width="375" height="475">
+                    </div>
+
+                    <div class="carousel-item itemImage">
+                        <img src="/client/src/img/magnifying-glass-solid.svg" alt="Logo" class="d-block w-100" width="375" height="475">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselImageItem" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselImageItem" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="bg-body-secondary p-3 rounded">
+                <span class="text-center fs-5 fw-bolder">Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="bg-body-secondary p-2 rounded mt-3 mb-3 text-center">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+            <div class="">
+                <button class="mt-2 mb-3 bg-warning rounded fs-1 fw-bolder pt-1 pb-1
+                        position-relative w-100">
+                    Buy
+                </button>
+            </div>
+            <div>
+                <button type="button" class="btn bg-body-secondary" data-bs-toggle="button">
+                    <span class="fs-4 fw-bolder ">Follow</span>
+                    <img src="/client/src/img/heart-regular.svg" alt="Heart" width="50" height="50" class="ms-2">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Опис продукта -->
+<div class="container bg-body-secondary p-3 rounded mt-4">
+    <div class="bg-body-secondary">
+<!--        Опис-->
+        <div>
+            <h2 class="fw-bolder">Description</h2>
+            <span class="fs-5 text-break">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cupiditate deleniti doloribus error, est, expedita harum impedit in itaque molestiae odit, reiciendis rerum sequi suscipit velit. Aliquam cum iusto non possimus qui quod? Aspernatur commodi consectetur consequuntur culpa cum cupiditate dicta distinctio ea eaque error eum eveniet ex exercitationem fuga fugiat iste neque nesciunt nihil nisi nobis numquam obcaecati pariatur placeat provident quae quasi quisquam quod reiciendis rem repellat repellendus, sapiente sunt tempore ut veritatis voluptates voluptatum! Dolor earum exercitationem iste maxime nam quod reprehenderit sit. Aut debitis, dolorem doloribus earum eos explicabo, impedit libero molestiae nemo officiis rerum vel.</span>
+        </div>
+<!--        Характеристики-->
+        <div class="mt-3">
+            <h2 class="fw-bolder">Characteristics</h2>
+            <table class="table table-secondary table-striped table-hover">
+                <tr>
+                    <td>Price</td>
+                    <td>699 грн</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>глибокопроникна</td>
+                </tr>
+                <tr>
+                    <td>Бренд</td>
+                    <td>Ceresit</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--створити відгук-->
+<div class="container mt-3 ps-3 pt-3 bg-body-secondary rounded">
+    <h2 class="">Leave a review</h2>
+    <form class="mt-3 pb-3">
+        <div class="container">
+            <div class="star_rating">
+                <label class="pe-2 fs-5 fw-bold">Rate</label>
+                <button class="bi-star-fill fs-4 star"></button>
+                <button class="bi-star-fill fs-4 star"></button>
+                <button class="bi-star-fill fs-4 star"></button>
+                <button class="bi-star-fill fs-4 star"></button>
+                <button class="bi-star-fill fs-4 star"></button>
+                <input type="number" id="rateStar">
+            </div>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="bigComment" style="height: 100px"></textarea>
+            <label for="bigComment">Comments</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control" id="advantages" placeholder="Advantages">
+            <label for="advantages">Advantages</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="minuses" placeholder="Minuses">
+            <label for="minuses">Minuses</label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3 pt-2 pb-2 ps-4 pe-4 fs-4">Submit</button>
+    </form>
+
+<!--    Всі відгуки-->
+</div>
+
+<div class="container mt-3 ps-3 pt-3 w-100">
+<!--    Приклад відгуку-->
+    <div class="container bg-body-secondary rounded">
+        <div class="row">
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">Ivan Ivanov</span>
+            </div>
+            <div class="col-auto mt-2">
+                <ul class="star_rating ps-0 ">
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                </ul>
+            </div>
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">01.01.1990</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-control">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae cumque doloremque eos error, est labore laudantiu
+                    m, molestias nobis officiis quasi qui quibusdam reiciendis rem ullam vitae voluptatibus. Ad aliquid excepturi explicabo maiores nesc
+                    iunt. Aperiam iusto quae quisquam repellat? Alias architecto, consectetur consequuntur debitis dignissimos dolorum esse hic, illum i
+                    ste labore, nesciunt optio perferendis perspiciatis porro possimus quia reiciendis repellendus sed soluta ut! Aliquid exercitatione
+                    m laboriosam porro quam sunt! Aperiam assumenda explicabo modi nam neque quas voluptatem? Aliquid asperiores, at deleniti distincti
+                    o ea enim error expedita id incidunt maiores molestiae nam perspiciatis quibusdam quo repudiandae similique tenetur vel. Animi, itaq
+                    ue.
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Плюси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Мінуси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-body-secondary rounded mt-5">
+        <div class="row">
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">Ivan Ivanov</span>
+            </div>
+            <div class="col-auto mt-2">
+                <ul class="star_rating ps-0 ">
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                </ul>
+            </div>
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">01.01.1990</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-control">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae cumque doloremque eos error, est labore laudantiu
+                    m, molestias nobis officiis quasi qui quibusdam reiciendis rem ullam vitae voluptatibus. Ad aliquid excepturi explicabo maiores nesc
+                    iunt. Aperiam iusto quae quisquam repellat? Alias architecto, consectetur consequuntur debitis dignissimos dolorum esse hic, illum i
+                    ste labore, nesciunt optio perferendis perspiciatis porro possimus quia reiciendis repellendus sed soluta ut! Aliquid exercitatione
+                    m laboriosam porro quam sunt! Aperiam assumenda explicabo modi nam neque quas voluptatem? Aliquid asperiores, at deleniti distincti
+                    o ea enim error expedita id incidunt maiores molestiae nam perspiciatis quibusdam quo repudiandae similique tenetur vel. Animi, itaq
+                    ue.
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Плюси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Мінуси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-body-secondary rounded mt-5">
+        <div class="row">
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">Ivan Ivanov</span>
+            </div>
+            <div class="col-auto mt-2">
+                <ul class="star_rating ps-0 ">
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                </ul>
+            </div>
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">01.01.1990</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-control">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae cumque doloremque eos error, est labore laudantiu
+                    m, molestias nobis officiis quasi qui quibusdam reiciendis rem ullam vitae voluptatibus. Ad aliquid excepturi explicabo maiores nesc
+                    iunt. Aperiam iusto quae quisquam repellat? Alias architecto, consectetur consequuntur debitis dignissimos dolorum esse hic, illum i
+                    ste labore, nesciunt optio perferendis perspiciatis porro possimus quia reiciendis repellendus sed soluta ut! Aliquid exercitatione
+                    m laboriosam porro quam sunt! Aperiam assumenda explicabo modi nam neque quas voluptatem? Aliquid asperiores, at deleniti distincti
+                    o ea enim error expedita id incidunt maiores molestiae nam perspiciatis quibusdam quo repudiandae similique tenetur vel. Animi, itaq
+                    ue.
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Плюси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Мінуси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-body-secondary rounded mt-5">
+        <div class="row">
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">Ivan Ivanov</span>
+            </div>
+            <div class="col-auto mt-2">
+                <ul class="star_rating ps-0 ">
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                </ul>
+            </div>
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">01.01.1990</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-control">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae cumque doloremque eos error, est labore laudantiu
+                    m, molestias nobis officiis quasi qui quibusdam reiciendis rem ullam vitae voluptatibus. Ad aliquid excepturi explicabo maiores nesc
+                    iunt. Aperiam iusto quae quisquam repellat? Alias architecto, consectetur consequuntur debitis dignissimos dolorum esse hic, illum i
+                    ste labore, nesciunt optio perferendis perspiciatis porro possimus quia reiciendis repellendus sed soluta ut! Aliquid exercitatione
+                    m laboriosam porro quam sunt! Aperiam assumenda explicabo modi nam neque quas voluptatem? Aliquid asperiores, at deleniti distincti
+                    o ea enim error expedita id incidunt maiores molestiae nam perspiciatis quibusdam quo repudiandae similique tenetur vel. Animi, itaq
+                    ue.
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Плюси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Мінуси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-body-secondary rounded mt-5">
+        <div class="row">
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">Ivan Ivanov</span>
+            </div>
+            <div class="col-auto mt-2">
+                <ul class="star_rating ps-0 ">
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                    <i class="bi-star-fill fs-4"></i>
+                </ul>
+            </div>
+            <div class="col-auto mt-3">
+                <span class="ms-2 fs-5">01.01.1990</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-control">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae cumque doloremque eos error, est labore laudantiu
+                    m, molestias nobis officiis quasi qui quibusdam reiciendis rem ullam vitae voluptatibus. Ad aliquid excepturi explicabo maiores nesc
+                    iunt. Aperiam iusto quae quisquam repellat? Alias architecto, consectetur consequuntur debitis dignissimos dolorum esse hic, illum i
+                    ste labore, nesciunt optio perferendis perspiciatis porro possimus quia reiciendis repellendus sed soluta ut! Aliquid exercitatione
+                    m laboriosam porro quam sunt! Aperiam assumenda explicabo modi nam neque quas voluptatem? Aliquid asperiores, at deleniti distincti
+                    o ea enim error expedita id incidunt maiores molestiae nam perspiciatis quibusdam quo repudiandae similique tenetur vel. Animi, itaq
+                    ue.
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Плюси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-3">
+                    <span class="fs-4 fw-bold">Мінуси</span>
+                    <div class="form-control mt-1">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="mt-2 mb-3 bg-info bg-gradient rounded fs-1 fw-bolder pt-1 pb-1
+                        position-relative w-100">
+            Більше відгуків
+        </button>
+    </div>
+</div>
+<script src="/client/js/product-page.js"></script>
+</body>
+<footer class="footer pt-3 mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">About</h5>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Contacts</h5>
+                        <p class="card-text">
+                            <span><img class="footer_icon pe-1 pb-2" src="/client/src/img/phone-solid.svg" alt="Phone"/>Phone number +380-000-000-00-00</span><br>
+                            <span><img class="footer_icon pe-1 pb-1" src="/client/src/img/envelope-solid.svg" alt="Mail"/>Email work_email@email.com</span><br>
+                            <span><img class="footer_icon pe-1 pb-2" src="/client/src/img/map-location-dot-solid.svg" alt="Map"/>
+                            Житомирська область,
+                            Житомир
+                            вулиця Кафедральна, 4</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2 class="card-text">
+                            <div class="pb-3">You can pay <img class="footer_big_icon pe-1" src="/client/src/img/cc-visa.svg" alt="Visa"/> <img class="footer_big_icon pe-1" src="/client/src/img/cc-mastercard.svg" alt="Mastercard"/> <img class="footer_big_icon pe-1" src="/client/src/img/cc-apple-pay.svg" alt="ApplePay"/><br></div>
+                            Follow us on <img class="footer_big_icon pe-1" src="/client/src/img/facebook.svg" alt="Facebook"/> <img class="footer_big_icon pe-1" src="/client/src/img/instagram.svg" alt="Instagram"/> <img class="footer_big_icon pe-1" src="/client/src/img/tiktok.svg" alt="TikTok"/>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>

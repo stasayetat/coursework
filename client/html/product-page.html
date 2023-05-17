@@ -58,8 +58,8 @@
                 </li>
                 <li class="nav-item list-inline-item position-relative">
                     <input href="#" class="icon_fif" type="image" src="/client/src/img/cart-shopping-solid.svg">
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3">
-                        12
+                    <span id="cartAmount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3">
+                        0
                         <span class="visually-hidden">unread messages</span>
                     </span>
                 </li>
@@ -118,7 +118,7 @@
                 <span class="fs-3 fw-bolder">699 грн</span>
             </div>
             <div class="">
-                <button class="mt-2 mb-3 bg-warning rounded fs-1 fw-bolder pt-1 pb-1
+                <button id="buyButton" class="mt-2 mb-3 bg-warning rounded fs-1 fw-bolder pt-1 pb-1
                         position-relative w-100">
                     Buy
                 </button>
@@ -438,6 +438,17 @@
         </button>
     </div>
 </div>
+
+<!--Показується після нажаття кнопки-->
+<div id="buyToast" class="toast position-fixed bottom-0 end-0 p-3 z-3 buy-alert" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+        <span>Item name</span> додано у кошик
+        <div class="mt-2 pt-2 border-top">
+            <button type="button" class="btn btn-primary btn-sm mb-3">Оформити замовлення</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Продовжити покупки</button>
+        </div>
+    </div>
+</div>
 <!--Схожі предмети-->
 <div class="container">
     <h2>Similar items</h2>
@@ -453,7 +464,6 @@
                 </a>
                 <div class="card-body">
                     <span>743 USD</span>
-                    <button class="btn btn-primary ms-5">Buy</button>
                 </div>
             </div>
         </div>
@@ -468,7 +478,6 @@
                 </a>
                 <div class="card-body">
                     <span>743 USD</span>
-                    <button class="btn btn-primary ms-5">Buy</button>
                 </div>
             </div>
         </div>
@@ -483,7 +492,6 @@
                 </a>
                 <div class="card-body">
                     <span>743 USD</span>
-                    <button class="btn btn-primary ms-5">Buy</button>
                 </div>
             </div>
         </div>
@@ -498,7 +506,6 @@
                 </a>
                 <div class="card-body">
                     <span>743 USD</span>
-                    <button class="btn btn-primary ms-5">Buy</button>
                 </div>
             </div>
         </div>

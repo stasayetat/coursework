@@ -8,6 +8,7 @@ form.addEventListener('submit', (e)=> {
     formGroups.forEach((item)=> {
        if(item.classList.contains('repeatPassword')) {
            if(form.elements.password.value !== form.elements.repeatPassword.value) {
+               item.classList.remove('was-validated');
                form.elements.repeatPassword.classList.add('is-invalid');
                e.preventDefault();
            } else {

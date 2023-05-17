@@ -12,3 +12,12 @@ allStars.forEach((item, index)=> {
         })
     });
 });
+
+    const buyButton = document.getElementById('buyButton')
+    const buyToast = document.getElementById('buyToast');
+    const cartAmount = document.getElementById('cartAmount');
+
+    buyButton.addEventListener('click', (e)=> {
+        buyToast.classList.add('show');
+        cartAmount.innerText = Number(cartAmount.innerText.split('\n')[0])+1;
+    });

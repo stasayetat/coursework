@@ -24,7 +24,7 @@
 <!--            Логотип та всі предмети + кнопка-->
             <ul class="list-inline float-start">
                 <li>
-                    <a href="#" class="navbar-fluid">
+                    <a href="#" class="navbar-fluid" id="bigLogo">
                         <img src="/client/src/img/logo.svg" alt="Logo" class="logo_icon">
                     </a>
                 </li>
@@ -45,22 +45,22 @@
 <!--            Пошукова стрічка-->
             <form class="d-flex flex-fill p-5" role="search">
                 <input type="search" class="form-control rounded-start-pill" type="search" placeholder="Пошук"
-                       aria-label="Search">
-                <input type="image" src="/client/src/img/magnifying-glass-solid.svg" class="btn btn-outline-success rounded-end-pill icon_fif"/>
+                       aria-label="Search" id="searchInput">
+                <input type="image" src="/client/src/img/magnifying-glass-solid.svg" class="btn btn-outline-success rounded-end-pill icon_fif" id="searchButton"/>
             </form>
 <!--            Користувач, вподобання та кошик-->
             <ul class="list-inline float-end">
                 <li class="nav-item">
-                    <input class="icon_fif" type="image" src="/client/src/img/circle-user-solid.svg"/>
+                    <input class="icon_fif" type="image" src="/client/src/img/circle-user-solid.svg" id="userIcon"/>
                     <!--Максимум приблизно 15 символів, так що краще використати userName-->
-                    <span class="userName" >Username</span>
+                    <span class="userName" id="userName">Username</span>
                 </li>
                 <li class="nav-item list-inline-item">
-                    <input href="#" class="icon_fif" type="image" src="/client/src/img/heart-solid.svg"/>
+                    <input class="icon_fif" type="image" src="/client/src/img/heart-solid.svg" id="savedItems"/>
                 </li>
                 <li class="nav-item list-inline-item position-relative">
-                    <input href="#" class="icon_fif" type="image" src="/client/src/img/cart-shopping-solid.svg"/>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3">
+                    <input class="icon_fif" type="image" src="/client/src/img/cart-shopping-solid.svg"/>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3" id="cartItem">
                         12
                         <span class="visually-hidden">unread messages</span>
                     </span>
@@ -70,18 +70,24 @@
     </nav>
 <!--    Вспливаюче вікно від всі предмети-->
     <div class="collapse navbar-collapse position-absolute z-3" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-light nav-all-items border border-secondary">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-light nav-all-items border border-secondary rounded" id="allCategoryWindow">
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Будівельні матеріали</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Лакофарбові матеріали</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Електротовари</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">LinkLinkLinkLink</a>
+                <a class="nav-link" href="#">Будівельні суміші</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Вікна</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Двері</a>
             </li>
         </ul>
     </div>
@@ -273,6 +279,7 @@
     </div>
 </div>
 <script src="/client/js/home-page.js"></script>
+<script type="module" src="/client/js/header.js"></script>
 </body>
 <footer class="footer pt-3 mt-3">
     <div class="container">

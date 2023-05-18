@@ -86,7 +86,7 @@
 <div class="container">
   <div class="register text-center mt-3 mb-3">
     <h1 class="mb-4 text-center">Login</h1>
-    <form class="loginForm" novalidate>
+    <form class="loginForm mb-2"  action="/user/login" novalidate>
       <div class="form-group">
         <label class="form-label" for="email">Email address</label>
         <input class="form-control" type="email" id="email" required>
@@ -104,6 +104,7 @@
       </div>
       <input type="submit" value="SIGN IN" class="fs-3 mt-3 btn btn-success w-100">
     </form>
+    <a href="#" class="fs-5 fw-bold">Ще не зарєстровані?</a>
   </div>
 </div>
 <script src="/client/js/login-page.js"></script>

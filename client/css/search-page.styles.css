@@ -1,0 +1,20 @@
+.right {
+    float: right;
+}
+
+.sorting-label {
+    display: inline-block;
+    padding-top: 9px;
+    vertical-align: top;
+}
+
+.r {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

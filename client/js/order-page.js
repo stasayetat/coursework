@@ -41,7 +41,7 @@ realCloseButts.forEach((item)=> {
 
 
 
-const form = document.querySelector('.orderForm');
+const form = document.querySelector('#orderForm');
 form.addEventListener('submit', async (e)=> {
     if (!form.checkValidity() || !boughtItems.children[1].classList.contains('bt-item')) {
         e.preventDefault();
@@ -58,7 +58,11 @@ form.addEventListener('submit', async (e)=> {
         }
         const formData = new FormData(form);
         formData.append('products', JSON.stringify(products));
+        for(let [name, value] of formData) {
+            alert(`${name} = ${value}`); // key1 = value1, then key2 = value2
+        }
         await axios.post('/order', formData);
+        e.preventDefault();
     }
 
 });

@@ -88,27 +88,27 @@
 </header>
 <!--Персональні дані-->
 <div class="container bg-body-tertiary mt-3 rounded">
-    <form class="orderForm" novalidate>
+    <form class="orderForm" id="orderForm" novalidate>
         <div class="row">
             <h1 class="pt-3 fw-bold">Персональні дані</h1>
             <div class="col-6 mt-4">
                 <div class="form-group">
                     <label class="form-label ms-1" for="surname">Surname</label>
-                    <input class="form-control" type="text" id="surname" required>
+                    <input class="form-control" type="text" id="surname" name="surname" required>
                 </div>
             </div>
 
             <div class="col-6 mt-4">
                 <div class="form-group">
                     <label class="form-label ms-1" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" required>
+                    <input class="form-control" type="text" id="name" name="name" required>
                 </div>
             </div>
 
             <div class="col-6 mt-4">
                 <div class="form-group req">
                     <label class="form-label" for="email">Email address</label>
-                    <input class="form-control" type="email" id="email" required>
+                    <input class="form-control" type="email" id="email" name="email" required>
                     <div class="invalid-feedback">
                         Please enter your email address
                     </div>
@@ -121,7 +121,7 @@
             <div class="col-6 mt-4">
                 <div class="form-group req">
                     <label class="form-label" for="address">Address</label>
-                    <input class="form-control" type="text" id="address" required>
+                    <input class="form-control" type="text" id="address" name="address" required>
                     <div class="invalid-feedback">
                         Please enter your address
                     </div>
@@ -131,153 +131,154 @@
             <div class="col-6 mt-4">
                 <div class="form-group req">
                     <label class="form-label" for="payment">Payment</label>
-                    <select class="form-select" aria-label="Default select example" id="payment">
+                    <select class="form-select" aria-label="Default select example" id="payment" name="payment">
                         <option selected value="Карта">Карта</option>
                         <option value="Готівка">Готівка</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="row mt-3" id="boughtItems">
-            <h3 class="pt-3 fw-bold">Товари</h3>
-            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
-                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
-                <div class="p-3">
-                    <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
-                </div>
-                <div class="col-12 ">
-                    <div class="d-flex">
-                        <div>
-                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
-                        </div>
-                        <div class="input-group w-auto align-items-center">
-                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
-                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
-                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
-                        </div>
-                    </div>
-                </div>
-                <div class=" ms-3 mt-3 mb-3">
-                    <span class="fs-3 fw-bolder">699 грн</span>
-                </div>
-            </div>
-
-            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
-                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
-                <div class="p-3">
-                    <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
-                </div>
-                <div class="col-12 ">
-                    <div class="d-flex">
-                        <div>
-                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
-                        </div>
-                        <div class="input-group w-auto align-items-center">
-                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
-                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
-                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
-                        </div>
-                    </div>
-                </div>
-                <div class=" ms-3 mt-3 mb-3">
-                    <span class="fs-3 fw-bolder">699 грн</span>
-                </div>
-            </div>
-
-            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
-                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
-                <div class="p-3">
-                    <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
-                </div>
-                <div class="col-12 ">
-                    <div class="d-flex">
-                        <div>
-                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
-                        </div>
-                        <div class="input-group w-auto align-items-center">
-                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
-                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
-                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
-                        </div>
-                    </div>
-                </div>
-                <div class=" ms-3 mt-3 mb-3">
-                    <span class="fs-3 fw-bolder">699 грн</span>
-                </div>
-            </div>
-
-            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
-                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
-                <div class="p-3">
-                    <span class="text-center fs-5 fw-bolder itemName" >Батарея універсальна Xiaomi Redmi 20000mAh</span>
-                </div>
-                <div class="col-12 ">
-                    <div class="d-flex">
-                        <div>
-                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
-                        </div>
-                        <div class="input-group w-auto align-items-center">
-                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
-                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
-                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
-                        </div>
-                    </div>
-                </div>
-                <div class=" ms-3 mt-3 mb-3">
-                    <span class="fs-3 fw-bolder">699 грн</span>
-                </div>
-            </div>
-
-            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
-                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
-                <div class="p-3">
-                    <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
-                </div>
-                <div class="col-12 ">
-                    <div class="d-flex">
-                        <div>
-                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
-                        </div>
-                        <div class="input-group w-auto align-items-center">
-                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
-                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
-                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
-                        </div>
-                    </div>
-                </div>
-                <div class=" ms-3 mt-3 mb-3">
-                    <span class="fs-3 fw-bolder">699 грн</span>
-                </div>
-            </div>
-
-            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
-                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
-                <div class="p-3">
-                    <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
-                </div>
-                <div class="col-12 ">
-                    <div class="d-flex">
-                        <div>
-                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
-                        </div>
-                        <div class="input-group w-auto align-items-center">
-                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
-                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
-                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
-                        </div>
-                    </div>
-                </div>
-                <div class=" ms-3 mt-3 mb-3">
-                    <span class="fs-3 fw-bolder">699 грн</span>
-                </div>
-            </div>
-
-        </div>
         <input type="submit" value="ОФОРМИТИ ЗАМОВЛЕННЯ" class="fs-3 mt-4 btn btn-success w-100 fw-bold">
     </form>
+
+    <div class="row mt-3" id="boughtItems">
+        <h3 class="pt-3 fw-bold">Товари</h3>
+        <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+            <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
+            <div class="p-3">
+                <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="col-12 ">
+                <div class="d-flex">
+                    <div>
+                        <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                    </div>
+                    <div class="input-group w-auto align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                        <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                    </div>
+                </div>
+            </div>
+            <div class=" ms-3 mt-3 mb-3">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+        </div>
+
+        <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+            <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
+            <div class="p-3">
+                <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="col-12 ">
+                <div class="d-flex">
+                    <div>
+                        <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                    </div>
+                    <div class="input-group w-auto align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                        <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                    </div>
+                </div>
+            </div>
+            <div class=" ms-3 mt-3 mb-3">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+        </div>
+
+        <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+            <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
+            <div class="p-3">
+                <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="col-12 ">
+                <div class="d-flex">
+                    <div>
+                        <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                    </div>
+                    <div class="input-group w-auto align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                        <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                    </div>
+                </div>
+            </div>
+            <div class=" ms-3 mt-3 mb-3">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+        </div>
+
+        <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+            <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
+            <div class="p-3">
+                <span class="text-center fs-5 fw-bolder itemName" >Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="col-12 ">
+                <div class="d-flex">
+                    <div>
+                        <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                    </div>
+                    <div class="input-group w-auto align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                        <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                    </div>
+                </div>
+            </div>
+            <div class=" ms-3 mt-3 mb-3">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+        </div>
+
+        <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+            <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
+            <div class="p-3">
+                <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="col-12 ">
+                <div class="d-flex">
+                    <div>
+                        <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                    </div>
+                    <div class="input-group w-auto align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                        <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                    </div>
+                </div>
+            </div>
+            <div class=" ms-3 mt-3 mb-3">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+        </div>
+
+        <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+            <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/client/src/img/xmark-solid.svg" width="20" height="20">
+            <div class="p-3">
+                <span class="text-center fs-5 fw-bolder itemName">Батарея універсальна Xiaomi Redmi 20000mAh</span>
+            </div>
+            <div class="col-12 ">
+                <div class="d-flex">
+                    <div>
+                        <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                    </div>
+                    <div class="input-group w-auto align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                        <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                    </div>
+                </div>
+            </div>
+            <div class=" ms-3 mt-3 mb-3">
+                <span class="fs-3 fw-bolder">699 грн</span>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<script src="/client/js/order-page.js"></script>
+<script type="module" src="/client/js/order-page.js"></script>
 </body>
 <footer class="footer pt-3 mt-3">
     <div class="container">

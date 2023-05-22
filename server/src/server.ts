@@ -9,12 +9,15 @@ import {IProductPageController} from "./handlebars-controllers/product-page/prod
 import {ProductPageController} from "./handlebars-controllers/product-page/product.page.controller";
 import {ReviewController} from "./handlebars-controllers/reviews/review.controller";
 import {IReviewController} from "./handlebars-controllers/reviews/review.controller.interface";
+import {ISearchPageController} from "./handlebars-controllers/search-product/search.page.controller.interface";
+import {SearchPageController} from "./handlebars-controllers/search-product/search.page.controller";
 
 config();
 const myContainer = new Container();
 myContainer.bind<IMainPageController>(TYPES.IMainPageController).to(MainPageController).inSingletonScope();
 myContainer.bind<IProductPageController>(TYPES.IProductPageController).to(ProductPageController).inSingletonScope();
 myContainer.bind<IReviewController>(TYPES.IReviewController).to(ReviewController).inSingletonScope();
+myContainer.bind<ISearchPageController>(TYPES.ISearchPageController).to(SearchPageController).inSingletonScope();
 myContainer.bind<App>(TYPES.App).to(App).inSingletonScope();
 
 const app = myContainer.get<App>(TYPES.App);

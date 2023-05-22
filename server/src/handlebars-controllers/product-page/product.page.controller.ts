@@ -8,7 +8,7 @@ import {NextFunction, Request, Response} from "express";
 export class ProductPageController extends BaseController implements IProductPageController {
     private productPageMethod: IControllerRoute[] = [
         {
-            path: '/',
+            path: '/:id',
             func: this.productPageFunc,
             method: 'get'
         },
@@ -25,7 +25,7 @@ export class ProductPageController extends BaseController implements IProductPag
     }
 
     public productPageFunc(req: Request, res: Response, next: NextFunction): void {
-        console.log('Product-page render');
+        console.log('Product-page render ' +  req.params.id);
         res.render('product-page', {
             username: 'Станіслав Ярець',
             itemName: 'Шуруповерт Tekhmann TCD-12 QC Li',

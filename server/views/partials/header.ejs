@@ -33,7 +33,9 @@
                 <li class="nav-item">
                     <input class="icon_fif" type="image" src="/src/img/circle-user-solid.svg" id="userIcon"/>
                     <!--Максимум приблизно 15 символів, так що краще використати userName-->
+                    <%if(typeof username !== 'undefined'){ %>
                     <span class="userName text-center" id="userName"><%=username%></span>
+                    <%} %>
                 </li>
                 <li class="nav-item list-inline-item">
                     <input class="icon_fif" type="image" src="/src/img/heart-solid.svg" id="savedItems"/>

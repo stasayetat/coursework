@@ -31,6 +31,4 @@ export class MainPageController extends BaseController implements IMainPageContr
             ]
         });
     };
-
-
 }

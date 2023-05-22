@@ -11,6 +11,8 @@ import {ReviewController} from "./handlebars-controllers/reviews/review.controll
 import {IReviewController} from "./handlebars-controllers/reviews/review.controller.interface";
 import {IProductPageController} from "./handlebars-controllers/product-page/product.page.controller.interface";
 import {json, urlencoded} from "body-parser";
+import {SearchPageController} from "./handlebars-controllers/search-product/search.page.controller";
+import {ISearchPageController} from "./handlebars-controllers/search-product/search.page.controller.interface";
 @injectable()
 export class App {
     public app: Express;
@@ -18,7 +20,8 @@ export class App {
 
     constructor(@inject(TYPES.IMainPageController) private mainPageController: IMainPageController,
                 @inject(TYPES.IProductPageController) private productPageController: IProductPageController,
-                @inject(TYPES.IReviewController) private reviewController: IReviewController) {
+                @inject(TYPES.IReviewController) private reviewController: IReviewController,
+                @inject(TYPES.ISearchPageController) private searchPageController: ISearchPageController) {
         this.app = express();
         this.PORT = process.env.PORT || 3000;
     }
@@ -39,6 +42,7 @@ export class App {
         this.app.use('/', this.mainPageController.router);
         this.app.use('/product', this.productPageController.router);
         this.app.use('/reviews', this.reviewController.router);
+        this.app.use('/search', this.searchPageController.router);
     }
 
     public async init() {

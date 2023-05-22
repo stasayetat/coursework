@@ -9,6 +9,7 @@ searchButton.addEventListener('click', async ()=> {
 
 let userIcon = document.querySelector('#userIcon');
 userIcon.addEventListener('click', async ()=> {
+    alert(123);
     // await axios.get('/user/main/');
 });
 

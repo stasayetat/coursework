@@ -17,12 +17,12 @@ allStars.forEach((item, index)=> {
 
 const buyButton = document.getElementById('buyButton')
 const buyToast = document.getElementById('buyToast');
-const cartAmount = document.getElementById('cartAmount');
+const cartItem = document.getElementById('cartItem');
 
 buyButton.addEventListener('click', async (e)=> {
     buyToast.querySelector('#itemNameToast').innerText = document.querySelector('#itemName').innerText;
     buyToast.classList.add('show');
-    cartAmount.innerText = Number(cartAmount.innerText.split('\n')[0])+1;
+    cartItem.innerText = Number(cartItem.innerText.split('\n')[0])+1;
     await axios.post('/order/add', document.querySelector('#itemName').innerText);
 });
 
@@ -77,7 +77,7 @@ moreRevButton.addEventListener('click', async ()=> {
         const rateUl = div.querySelector('#starRatingNumber');
         for(let i = 0; i < 5; i++) {
             let curRat = document.createElement('li');
-            if(i <= rate) {
+            if(i < rate) {
                 curRat.innerHTML = '<i class="bi-star-fill fs-4 golden-star"></i>';
             } else {
                 curRat.innerHTML = '<i class="bi-star-fill fs-4"></i>';
@@ -100,6 +100,7 @@ reviewForm.addEventListener('submit', async (e)=> {
     }
     reviewForm.classList.add('was-validated');
     const formData = new FormData(reviewForm);
+    formData.append('itemTitle', document.querySelector('#itemName').innerText);
     await axios.post('/reviews/add', formData);
     e.preventDefault();
 });
@@ -110,9 +111,9 @@ followButton.addEventListener('click', async ()=> {
     heart.classList.contains('followed') ? heart.classList.remove('followed') : heart.classList.add('followed');
     const followHeart = followButton.querySelector('.followed');
     if(followHeart) {
-        heart.src = "/client/src/img/heart-solid.svg";
+        heart.src = "/src/img/heart-solid.svg";
     } else {
-        heart.src = "/client/src/img/heart-regular.svg";
+        heart.src = "/src/img/heart-regular.svg";
     }
 });
 

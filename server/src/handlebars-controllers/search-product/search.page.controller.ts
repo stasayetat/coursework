@@ -19,6 +19,11 @@ export class SearchPageController extends BaseController implements ISearchPageC
             path: '/type/pages',
             func: this.getItemPages,
             method: 'get'
+        },
+        {
+            path: '/type/sort',
+            func: this.sortItems,
+            method: 'get'
         }
     ];
 
@@ -74,11 +79,30 @@ export class SearchPageController extends BaseController implements ISearchPageC
         console.log(`Page is ${page}`);
         const newPageItems = this.productsPagesArr[page];
         console.log(newPageItems);
-        // res.render('search-page', {
-        //     searchItemName: req.query.name,
-        //     allItemsAmount: this.productsPagesArr.length,
-        //     allItems: newPageItems
-        // });
         res.send(newPageItems);
+    }
+
+    public sortItems(req: Request, res: Response, next: NextFunction): void {
+        const sortMeth = req.query.sort as 'price' | 'title';
+        console.log(`Method is ${sortMeth}`);
+        const mergedArray = this.productsPagesArr.reduce((acc, curr) => acc.concat(curr), []);
+        const sortedArray = mergedArray.sort((a, b)=> {
+            if(a[sortMeth] > b[sortMeth]) {
+                return 1;
+            }
+            if(a[sortMeth] == b[sortMeth]) {
+                return 0;
+            }
+            if(a[sortMeth] < b[sortMeth]) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        this.productsPagesArr = [];
+        for(let i = 0; i < sortedArray.length; i += 20) {
+            this.productsPagesArr.push(sortedArray.slice(i, i+20));
+        }
+        res.redirect(req.originalUrl);
     }
 }

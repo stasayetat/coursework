@@ -83,7 +83,32 @@ export class ProductPageController extends BaseController implements IProductPag
                     disadvantages: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, harum.'
                 }
             ],
-            itemCarouselImages: ['/src/items/U0456349_big.webp', '/src/items/U0456349_2big.webp','/src/items/U0456349_3big.webp']
+            itemCarouselImages: ['/src/items/U0456349_big.webp', '/src/items/U0456349_2big.webp','/src/items/U0456349_3big.webp'],
+            simItems: [
+                {
+                    photoSrc: '/src/items/U0477744.webp',
+                    title: 'Монітор Samsung LF24T350FHIXCI',
+                    price: '4999'
+                },
+
+                {
+                    photoSrc: '/src/items/U0529908.webp',
+                    title: 'Батарея універсальна Xiaomi Redmi 20000mAh',
+                    price: '699'
+                },
+
+                {
+                    photoSrc: '/src/items/U0641069.webp',
+                    title: 'Фітнес браслет Xiaomi Mi Smart Band 7 Black Global',
+                    price: '1799'
+                },
+
+                {
+                    photoSrc: '/src/items/U0477744.webp',
+                    title: 'Монітор Samsung LF24T350FHIXCI',
+                    price: '4999'
+                },
+            ]
         });
     }
 }

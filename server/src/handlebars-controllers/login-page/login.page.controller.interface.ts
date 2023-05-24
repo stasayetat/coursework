@@ -1,9 +1,9 @@
 import {NextFunction, Request, Response, Router} from "express";
 import {IControllerRoute} from "../../common/route.interface";
 
-export interface ISearchPageController {
+export interface ILoginPageController {
     router: Router;
     bindRoutes: (routes: IControllerRoute[])=> void;
-    searchItem: (req: Request, res: Response, next: NextFunction)=> Promise<void>;
-    getItemPages: (req: Request, res: Response, next: NextFunction)=> void;
+    loginPage: (req: Request, res: Response, next: NextFunction)=> void;
+    // login: (req: Request, res: Response, next: NextFunction)=> void;
 }

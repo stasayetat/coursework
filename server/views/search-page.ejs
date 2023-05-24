@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/src/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/src/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/src/icon/favicon-16x16.png">
-    <link rel="manifest" href="/client/html/site.webmanifest">
+    <link rel="manifest" href="/client/public/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/css/header_footer.styles.css">
@@ -47,7 +47,7 @@
                 <div class="card item text-center" style="width: 15rem;">
                     <a href="#" class="itemTitle">
 <!--                        card-img-top-->
-                        <img src="<%=el.photoSrc%>" alt="Logo" class="bd-placeholder-img m-2">
+                        <img src="<%=el.photoSrc%>" alt="Logo" class="bd-placeholder-img m-2" width="200" height="200">
                         <div class="car-body">
                             <h5 class="card-title pt-3"><%=el.title%></h5>
                         </div>
@@ -72,7 +72,7 @@
                     </li>
                     <%for(let el = 1; el < allItemsAmount/20; el++){ %>
                         <li class="page-item">
-                            <a class="page-link" href="/page=<%=el+1%>"><%=el+1%></a>
+                            <a class="page-link"><%=el+1%></a>
                         </li>
                     <%} %>
                 </ul>

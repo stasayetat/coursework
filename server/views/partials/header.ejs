@@ -31,21 +31,28 @@
             <!--            Користувач, вподобання та кошик-->
             <ul class="list-inline float-end">
                 <li class="nav-item">
-                    <input class="icon_fif" type="image" src="/src/img/circle-user-solid.svg" id="userIcon"/>
+                    <a href="/users/">
+                        <img class="icon_fif" src="/src/img/circle-user-solid.svg" id="userIcon" alt="User Icon">
+                    </a>
                     <!--Максимум приблизно 15 символів, так що краще використати userName-->
                     <%if(typeof username !== 'undefined'){ %>
                     <span class="userName text-center" id="userName"><%=username%></span>
                     <%} %>
                 </li>
                 <li class="nav-item list-inline-item">
-                    <input class="icon_fif" type="image" src="/src/img/heart-solid.svg" id="savedItems"/>
+                    <a href="/users/saved">
+                        <img class="icon_fif" src="/src/img/heart-solid.svg" id="savedItems" alt="User Icon">
+                    </a>
                 </li>
                 <li class="nav-item list-inline-item position-relative">
-                    <input class="icon_fif" type="image" src="/src/img/cart-shopping-solid.svg"/>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3" id="cartItem">
+
+                    <a href="/orders">
+                        <img class="icon_fif" src="/src/img/cart-shopping-solid.svg" id="savedItems" alt="User Icon">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-3" id="cartItem">
                         0
                         <span class="visually-hidden">unread messages</span>
                     </span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -54,22 +61,22 @@
     <div class="collapse navbar-collapse position-absolute z-3" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-light nav-all-items border border-secondary rounded" id="allCategoryWindow">
             <li class="nav-item">
-                <a class="nav-link" href="#">Будівельні матеріали</a>
+                <a class="nav-link" href="/search/type?name=BuildMaterials&type=category">Будівельні матеріали</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Лакофарбові матеріали</a>
+                <a class="nav-link" href="/search/type?name=PaintMaterials&type=category">Лакофарбові матеріали</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Електротовари</a>
+                <a class="nav-link" href="/search/type?name=ElectricalProducts&type=category">Електротовари</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Будівельні суміші</a>
+                <a class="nav-link" href="/search/type?name=BuildMixes&type=category">Будівельні суміші</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Вікна</a>
+                <a class="nav-link" href="/search/type?name=Windows&type=category">Вікна</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Двері</a>
+                <a class="nav-link" href="/search/type?name=Doors&type=category">Двері</a>
             </li>
         </ul>
     </div>

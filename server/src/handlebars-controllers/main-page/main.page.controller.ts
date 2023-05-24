@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import {IMainPageController} from "./main.page.controller.interface";
 import {IControllerRoute} from "../../common/route.interface";
 import {NextFunction, Request, Response} from "express";
+import {get} from "lodash";
 @injectable()
 export class MainPageController extends BaseController implements IMainPageController{
     private mainPageMethod: IControllerRoute[] = [
@@ -22,7 +23,7 @@ export class MainPageController extends BaseController implements IMainPageContr
     public mainPageFunc (req: Request, res: Response, next: NextFunction): void {
         console.log('Main-page render');
         res.render("home-page", {
-            username: 'Станіслав Ярець',
+            username: get(req, 'user.email'),
             carouselImages: ['/src/carousel-images/64922.jpeg', '/src/carousel-images/2025682.jpg', '/src/carousel-images/2026232.jpg'],
             popularItems: [
                 {title: 'Набір інструментів Palpino-4 SL', image: '/src/items/U0456349.webp', price: '882'},

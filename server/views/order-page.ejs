@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BuildPeak</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/icon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/css/header_footer.styles.css">
+    <link rel="stylesheet" href="/css/order-page.styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+<%- include('C://Users//stasy//WebstormProjects//coursework//server//views//partials//header.ejs')%>
+<!--Персональні дані-->
+<div class="container bg-body-tertiary mt-3 rounded">
+    <form class="orderForm" id="orderForm" novalidate>
+        <div class="row">
+            <h1 class="pt-3 fw-bold">Персональні дані</h1>
+            <div class="col-6 mt-4">
+                <div class="form-group">
+                    <label class="form-label ms-1" for="surname">Surname</label>
+                    <input class="form-control" type="text" id="surname" name="surname" value="<%=surname%>" required>
+                </div>
+            </div>
+
+            <div class="col-6 mt-4">
+                <div class="form-group">
+                    <label class="form-label ms-1" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="name" value="<%=name%>" required>
+                </div>
+            </div>
+
+            <div class="col-6 mt-4">
+                <div class="form-group req">
+                    <label class="form-label" for="email">Email address</label>
+                    <input class="form-control" type="email" id="email" name="email" value="<%=email%>" readonly>
+                    <div class="invalid-feedback">
+                        Please enter your email address
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <h1 class="pt-3 fw-bold">Замовлення</h1>
+            <div class="col-6 mt-4">
+                <div class="form-group req">
+                    <label class="form-label" for="address">Address</label>
+                    <input class="form-control" type="text" id="address" name="address" required>
+                    <div class="invalid-feedback">
+                        Please enter your address
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-4">
+                <div class="form-group req">
+                    <label class="form-label" for="payment">Payment</label>
+                    <select class="form-select" aria-label="Default select example" id="payment" name="payment">
+                        <option selected value="Карта">Карта</option>
+                        <option value="Готівка">Готівка</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="ОФОРМИТИ ЗАМОВЛЕННЯ" class="fs-3 mt-4 btn btn-success w-100 fw-bold">
+    </form>
+
+    <div class="row mt-3" id="boughtItems">
+        <h3 class="pt-3 fw-bold">Товари</h3>
+        <%for(let el of userOrders){ %>
+            <div class="ms-3 mb-3 mt-3 col-auto me-5 bg-white rounded position-relative bt-item">
+                <input class="position-absolute top-0 end-0 mt-2 me-2 close-btn" type="image" src="/src/img/xmark-solid.svg" width="20" height="20">
+                <div class="p-3">
+                    <span class="text-center fs-5 fw-bolder itemName"><%=el.title%></span>
+                </div>
+                <div class="col-12 ">
+                    <div class="d-flex">
+                        <div>
+                            <label class="form-label me-3 ms-3 fs-5 fw-bold" for="quantityValue">Кількість</label>
+                        </div>
+                        <div class="input-group w-auto align-items-center">
+                            <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 decButton" data-field="quantity">
+                            <input type="number" step="1" max="10" min="1" value="1" name="quantity" class="itemAmount quantity-field border-0 text-center w-25 bg-white no-spinner quantityValue" disabled>
+                            <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm incButton" data-field="quantity">
+                        </div>
+                    </div>
+                </div>
+                <div class=" ms-3 mt-3 mb-3">
+                    <span class="fs-3 fw-bolder"><%=el.price%> ГРН</span>
+                </div>
+            </div>
+        <%} %>
+    </div>
+</div>
+
+<script type="module" src="/js/order-page.js"></script>
+</body>
+<%- include('C://Users//stasy//WebstormProjects//coursework//server//views//partials//footer.ejs')%>
+</html>

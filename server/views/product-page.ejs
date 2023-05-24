@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/src/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/src/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/src/icon/favicon-16x16.png">
-    <link rel="manifest" href="/client/html/site.webmanifest">
+    <link rel="manifest" href="/client/public/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/css/product-page.styles.css">
@@ -200,12 +200,6 @@
             </div>
         </div>
     <%} %>
-    <div>
-        <button class="mt-2 mb-3 bg-info bg-gradient rounded fs-1 fw-bolder pt-1 pb-1
-                        position-relative w-100" id="moreRevButton">
-            Більше відгуків
-        </button>
-    </div>
 </div>
 
 <!--Показується після нажаття кнопки-->
@@ -222,62 +216,22 @@
 <div class="container">
     <h2>Similar items</h2>
     <div class="row">
+        <%for(let el of simItems){ %>
         <div class="col-auto my-2">
             <!--            Приклад одного предмета-->
             <div class="card item text-center" style="width: 15rem;">
-                <a href="#" class="itemTitle">
-                    <img src="/src/img/magnifying-glass-solid.svg" alt="Logo" class="bd-placeholder-img card-img-top m-2" width="100" height="100">
-                    <div class="car-body">
-                        <h5 class="card-title pt-3">Item title 1</h5>
+                    <a href="#" class="itemTitle">
+                        <img src="<%=el.photoSrc%>" alt="Logo" class="bd-placeholder-img m-2">
+                        <div class="car-body">
+                            <h5 class="card-title pt-3"><%=el.title%></h5>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span><%=el.price%> ГРН</span>
                     </div>
-                </a>
-                <div class="card-body">
-                    <span>743 USD</span>
                 </div>
-            </div>
         </div>
-        <div class="col-auto my-2">
-            <!--            Приклад одного предмета-->
-            <div class="card item text-center" style="width: 15rem;">
-                <a href="#" class="itemTitle">
-                    <img src="/src/img/magnifying-glass-solid.svg" alt="Logo" class="bd-placeholder-img card-img-top m-2" width="100" height="100">
-                    <div class="car-body">
-                        <h5 class="card-title pt-3">Item title 1</h5>
-                    </div>
-                </a>
-                <div class="card-body">
-                    <span>743 USD</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-auto my-2">
-            <!--            Приклад одного предмета-->
-            <div class="card item text-center" style="width: 15rem;">
-                <a href="#" class="itemTitle">
-                    <img src="/src/img/magnifying-glass-solid.svg" alt="Logo" class="bd-placeholder-img card-img-top m-2" width="100" height="100">
-                    <div class="car-body">
-                        <h5 class="card-title pt-3">Item title 1</h5>
-                    </div>
-                </a>
-                <div class="card-body">
-                    <span>743 USD</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-auto my-2">
-            <!--            Приклад одного предмета-->
-            <div class="card item text-center" style="width: 15rem;">
-                <a href="#" class="itemTitle">
-                    <img src="/src/img/magnifying-glass-solid.svg" alt="Logo" class="bd-placeholder-img card-img-top m-2" width="100" height="100">
-                    <div class="car-body">
-                        <h5 class="card-title pt-3">Item title 1</h5>
-                    </div>
-                </a>
-                <div class="card-body">
-                    <span>743 USD</span>
-                </div>
-            </div>
-        </div>
+        <%} %>
     </div>
 </div>
 <script type="module" src="/js/product-page.js"></script>

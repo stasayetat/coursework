@@ -41,7 +41,7 @@
             <div class="col-6 mt-4">
                 <div class="form-group req">
                     <label class="form-label" for="email">Email address</label>
-                    <input class="form-control" type="email" id="email" name="email" value="<%=email%>" readonly>
+                    <input class="form-control" type="email" id="email" name="userEmail" value="<%=email%>" readonly>
                     <div class="invalid-feedback">
                         Please enter your email address
                     </div>
@@ -64,7 +64,7 @@
             <div class="col-6 mt-4">
                 <div class="form-group req">
                     <label class="form-label" for="payment">Payment</label>
-                    <select class="form-select" aria-label="Default select example" id="payment" name="payment">
+                    <select class="form-select" aria-label="Default select example" id="payment" name="paymentMethod">
                         <option selected value="Карта">Карта</option>
                         <option value="Готівка">Готівка</option>
                     </select>
@@ -101,7 +101,7 @@
         <%} %>
     </div>
 </div>
-
+<script type="module" src="/js/header.js"></script>
 <script type="module" src="/js/order-page.js"></script>
 </body>
 <%- include('C://Users//stasy//WebstormProjects//coursework//server//views//partials//footer.ejs')%>

@@ -30,6 +30,11 @@
                 <div class="invalid-feedback">
                     Please enter your email address
                 </div>
+                <%if(typeof failed !== "undefined") {%>
+                    <div class="invalid-response ">
+                        <p class="fs-5 fw-bold"><%=failed.toString()%></p>
+                    </div>
+                <%} %>
             </div>
 
             <div class="form-group">
@@ -44,6 +49,7 @@
         <a href="/register" class="fs-5 fw-bold">Ще не зарєстровані?</a>
     </div>
 </div>
+<script type="module" src="/js/header.js"></script>
 <script src="/js/login-page.js"></script>
 </body>
 <%- include('C://Users//stasy//WebstormProjects//coursework//server//views//partials//footer.ejs')%>

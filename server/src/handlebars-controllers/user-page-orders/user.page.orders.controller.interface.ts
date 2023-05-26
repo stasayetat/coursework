@@ -4,5 +4,5 @@ import {IControllerRoute} from "../../common/route.interface";
 export interface IUserPageOrdersController {
     router: Router;
     bindRoutes: (routes: IControllerRoute[])=> void;
-    userPageOrders: (req: Request, res: Response, next: NextFunction)=> void;
+    userPageOrders: (req: Request, res: Response, next: NextFunction)=> Promise<void>;
 }

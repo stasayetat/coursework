@@ -14,6 +14,12 @@ import {IOrderPageController} from "./handlebars-controllers/order-page/order.pa
 import {IItemsService} from "./items/items.service.interface";
 import {IItemsRepository} from "./items/items.repository.interface";
 import {IItemController} from "./items/item.controller.interface";
+import {IReviewService} from "./items/reviews/review.service.interface";
+import {IOrderPageService} from "./handlebars-controllers/order-page/order.page.service.interface";
+import {CheckAuthMiddleware} from "./common/check.auth.middleware";
+import {IUserPageSavedService} from "./handlebars-controllers/user-page-saved/user.page.saved.service.interface";
+import {IOrderService} from "./orders/order.service.interface";
+import {IOrderRepository} from "./orders/order.repository.interface";
 
 export const TYPES = {
     IMainPageController: Symbol.for('IMainPageController'),
@@ -32,5 +38,11 @@ export const TYPES = {
     IItemsService: Symbol.for('IItemsService'),
     IItemsRepository: Symbol.for('IItemsRepository'),
     IItemController: Symbol.for('IItemController'),
+    IReviewService: Symbol.for('IReviewService'),
+    IOrderPageService: Symbol.for('IOrderPageService'),
+    CheckAuthMiddleware: Symbol.for('CheckAuthMiddleware'),
+    IUserPageSavedService: Symbol.for('IUserPageSavedService'),
+    IOrderService: Symbol.for('IOrderService'),
+    IOrderRepository: Symbol.for('IOrderRepository'),
     App: Symbol.for('App')
 }

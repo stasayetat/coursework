@@ -4,6 +4,9 @@ export class User {
     private _password: string;
     private _name: string;
     private _surname: string;
+    private _cartItems: string[];
+    private _savedItems: string[];
+    private _orders: string[];
 
     constructor(private readonly _email: string) {
     }
@@ -36,5 +39,30 @@ export class User {
 
     public async setPassword(pass: string, salt: number): Promise<void> {
         this._password = await hash(pass, salt);
+    }
+
+
+    get cartItems(): string[] {
+        return this._cartItems;
+    }
+
+    set cartItems(value: string[]) {
+        this._cartItems = value;
+    }
+
+    get savedItems(): string[] {
+        return this._savedItems;
+    }
+
+    set savedItems(value: string[]) {
+        this._savedItems = value;
+    }
+
+    get orders(): string[] {
+        return this._orders;
+    }
+
+    set orders(value: string[]) {
+        this._orders = value;
     }
 }

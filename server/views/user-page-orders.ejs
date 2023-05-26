@@ -52,43 +52,44 @@
     <%for(let el of userOrders){ %>
         <tr>
             <td><%=el.date%></td>
-            <td><%=el.id%></td>
-            <td><%=el.status%></td>
-            <td><%=el.title%></td>
+            <td><%=el.orderNumber%></td>
+            <td><%=el.orderStatus%></td>
+            <td><%=[...el.items.keys()][0]%></td>
             <td><%=el.price%> ГРН</td>
             <td>
-                <input data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions<%=el.id%>" aria-controls="offcanvasWithBothOptions<%=el.id%>" type="image" src="/src/img/circle-info-solid.svg" height="25" width="25">
+                <input data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions<%=el.orderNumber%>" aria-controls="offcanvasWithBothOptions<%=el.orderNumber%>" type="image" src="/src/img/circle-info-solid.svg" height="25" width="25">
             </td>
         </tr>
 
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions<%=el.id%>" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions<%=el.orderNumber%>" aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
             <div class="p-3 rounded">
-                <span class="text-center fs-4 fw-bolder"><%=el.title%></span>
+                <span class="text-center fs-4 fw-bolder">Предмети</span>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div class="container">
-                <div class="row">
-                    <div class="col-auto">
-                        <img src="<%=el.photoSrc%>" alt="Logo" class="d-block w-100">
-                    </div>
+                <%for(let [key, value] of el.items){ %>
 
+                <div class="row">
                     <div class="bg-body-secondary p-3 rounded mt-1">
-                        <span class="text-center fs-4 fw-bolder">Кількість - <span><%=el.amount%></span> шт</span>
+                        <span class="text-center fs-4 fw-bolder">Назва - <span><%=key%></span> шт</span>
                     </div>
                     <div class="bg-body-secondary p-3 rounded mt-1">
-                        <span class="fs-4 fw-bolder"><%=el.price%> грн</span>
+                        <span class="text-center fs-4 fw-bolder">Кількість - <span><%=value%></span> шт</span>
                     </div>
-                    <div class="bg-body-secondary p-3 rounded mt-1">
-                        <span class="fs-4 fw-bolder">Дата замовлення: </span>
-                        <span class="fs-4 fw-bolder"><%=el.date%></span>
-                    </div>
-                    <div class="bg-body-secondary p-3 rounded mt-1">
-                        <span class="fs-4 fw-bolder">Метод оплати: </span>
-                        <span class="fs-4 fw-bolder"><%=el.paymentMethod%></span>
-                    </div>
+                </div>
+                <hr class="bg-black"  style="height: 4px;">
+                <%} %>
+
+                <div class="bg-body-secondary p-3 rounded mt-1">
+                    <span class="fs-4 fw-bolder">Дата замовлення: </span>
+                    <span class="fs-4 fw-bolder"><%=el.date%></span>
+                </div>
+                <div class="bg-body-secondary p-3 rounded mt-1">
+                    <span class="fs-4 fw-bolder">Метод оплати: </span>
+                    <span class="fs-4 fw-bolder"><%=el.paymentMethod%></span>
                 </div>
             </div>
         </div>
@@ -96,7 +97,7 @@
     <%} %>
     </tbody>
 </table>
-
+<script type="module" src="/js/header.js"></script>
 <script src="/js/user-page-orders.js"></script>
 </body>
 <%- include('C://Users//stasy//WebstormProjects//coursework//server//views//partials//footer.ejs')%>

@@ -1,4 +1,5 @@
 import {Category} from "./category.enum";
+import {Review} from "./reviews/review.entity";
 
 export class Item {
     private _title: string;
@@ -6,16 +7,17 @@ export class Item {
     private _price: number;
     private _photos: string[];
     private _characteristics: Map<string, string>;
+    private _reviews: Review[];
 
 
-    constructor(title: string, category: Category, price: number, photos: string[], characteristics: Map<string, string>) {
+    constructor(title: string, category: Category, price: number, photos: string[], characteristics: Map<string, string>, reviews: Review[]) {
         this._title = title;
         this._category = category;
         this._price = price;
         this._photos = photos;
         this._characteristics = characteristics;
+        this._reviews = reviews;
     }
-
 
     get title(): string {
         return this._title;
@@ -55,5 +57,14 @@ export class Item {
 
     set characteristics(value: Map<string, string>) {
         this._characteristics = value;
+    }
+
+
+    get reviews(): Review[] {
+        return this._reviews;
+    }
+
+    set reviews(value: Review[]) {
+        this._reviews = value;
     }
 }

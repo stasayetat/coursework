@@ -29,9 +29,9 @@
             <div class="d-flex align-items-center">
                 <span class="me-2 fs-5 fw-bold" style="white-space: nowrap;">Сортувати по: </span>
                 <select class="form-select" aria-label="Select sort method">
-                    <option selected value="0">алфавіту</option>
-                    <option value="1">зменшенню ціни</option>
-                    <option value="2">збільшення ціни</option>
+                    <option selected value="title">алфавіту</option>
+                    <option value="revPrice">зменшенню ціни</option>
+                    <option value="price">збільшення ціни</option>
                 </select>
             </div>
         </div>
@@ -39,26 +39,34 @@
 </div>
 <div class="container">
     <div class="row r" id="allItems">
+        <%if(Array.isArray(allItems)){ %>
 
         <%for(let el of allItems){ %>
 
-            <div class="col-auto my-2 item-wrapper">
-                <!--            Приклад одного предмета-->
-                <div class="card item text-center" style="width: 15rem;">
-                    <a href="#" class="itemTitle">
-<!--                        card-img-top-->
-                        <img src="<%=el.photoSrc%>" alt="Logo" class="bd-placeholder-img m-2" width="200" height="200">
-                        <div class="car-body">
-                            <h5 class="card-title pt-3"><%=el.title%></h5>
-                        </div>
-                    </a>
-                    <div class="card-body">
-                        <span><%=el.price%> ГРН</span>
+        <div class="col-auto my-2 item-wrapper">
+            <!--            Приклад одного предмета-->
+            <div class="card item text-center" style="width: 15rem;">
+                <a href="/product/<%=el.title%>" class="itemTitle">
+                    <!--                        card-img-top-->
+                    <img src="<%=el.image%>" alt="Logo" class="bd-placeholder-img m-2" width="200" height="200">
+                    <div class="car-body">
+                        <h5 class="card-title pt-3"><%=el.title%></h5>
                     </div>
+                </a>
+                <div class="card-body">
+                    <span><%=el.price%> ГРН</span>
                 </div>
             </div>
+        </div>
 
         <%} %>
+
+        <%} else {%>
+        <div class="col-auto my-2">
+            <span class="fw-bold fs-4">Товарів з такими даними не знайдено :(</span>
+        </div>
+        <%} %>
+
 
     </div>
 </div>
@@ -80,6 +88,7 @@
         </div>
     </div>
 </div>
+<script type="module" src="/js/header.js"></script>
 <script type="module" src="/js/search-page.js"></script>
 </body>
 <%- include('C://Users//stasy//WebstormProjects//coursework//server//views//partials//footer.ejs')%>

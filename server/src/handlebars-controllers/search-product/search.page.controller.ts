@@ -7,13 +7,16 @@ import {NextFunction, Request, Response} from "express";
 import {TYPES} from "../../types";
 import {IItemsService} from "../../items/items.service.interface";
 import {Item} from "../../items/item.entity";
+import {MiniItem} from "../../items/mini.item.entity";
+import {CheckAuthMiddleware} from "../../common/check.auth.middleware";
 @injectable()
 export class SearchPageController extends BaseController implements ISearchPageController {
     private searchPageMethods: IControllerRoute[] = [
         {
             path: '/type',
             func: this.searchItem,
-            method: 'get'
+            method: 'get',
+            middlewares: [this.checkAuthMiddleware]
         },
         {
             path: '/type/pages',
@@ -27,9 +30,10 @@ export class SearchPageController extends BaseController implements ISearchPageC
         }
     ];
 
-    private productsPagesArr: {photoSrc: string, title: string, price: string}[][] = [];
+    private productsPagesArr: MiniItem[][] = [];
 
-    constructor(@inject(TYPES.IItemsService) private itemsService: IItemsService) {
+    constructor(@inject(TYPES.IItemsService) private itemsService: IItemsService,
+                @inject(TYPES.CheckAuthMiddleware) private checkAuthMiddleware: CheckAuthMiddleware,) {
         super();
         this.bindRoutes(this.searchPageMethods);
     }
@@ -37,19 +41,19 @@ export class SearchPageController extends BaseController implements ISearchPageC
     public async searchItem(req: Request, res: Response, next: NextFunction): Promise<void> {
         const searchedText = req.query.name;
         const searchedType = req.query.type;
+        let authUser;
+        if(req.body.userAuth) {
+            authUser = req.body.userAuth;
+        }
         let searchedProducts = await this.itemsService.getItems(searchedText as string, searchedType as 'name' | 'category');
         // Передай в сервіс тип сортування, якщо є
         console.log('Search-page render ' +  searchedText + ' ' + searchedType);
         let prodLen: number;
-        let allProdRender: {photos: string, title: string, price: string} [] = [];
+        this.productsPagesArr = [];
         if(Array.isArray(searchedProducts)) {
             prodLen = searchedProducts.length;
             const filteredProducts = searchedProducts.map((item=>{
-                return {
-                    photoSrc: item.photos[0],
-                    title: item.title,
-                    price: item.price.toString()
-                }
+                return new MiniItem(item.title, item.photos[0], item.price);
             }));
             console.log('Seac' + filteredProducts);
             for(let i = 0; i < searchedProducts.length; i += 20) {
@@ -59,18 +63,17 @@ export class SearchPageController extends BaseController implements ISearchPageC
             prodLen = 0;
         }
         else {
-            this.productsPagesArr.push([{
-                photoSrc: searchedProducts.photos[0],
-                title: searchedProducts.title,
-                price: searchedProducts.price.toString()
-            }]);
+            this.productsPagesArr.push([new MiniItem(searchedProducts.title, searchedProducts.photos[0], searchedProducts.price)]);
             prodLen = 1;
         }
         // Пошук в репозиторії продуктів
-        res.render('search-page', {
+        console.log('Search-page render ' +  searchedText + ' ' + searchedType);
+        return res.render('search-page', {
             searchItemName: req.query.name,
             allItemsAmount: prodLen,
-            allItems: this.productsPagesArr[0]
+            allItems: this.productsPagesArr[0],
+            username: authUser?.email,
+            cartItems: authUser?.cartItems.length
         });
     }
 
@@ -84,25 +87,27 @@ export class SearchPageController extends BaseController implements ISearchPageC
 
     public sortItems(req: Request, res: Response, next: NextFunction): void {
         const sortMeth = req.query.sort as 'price' | 'title';
-        console.log(`Method is ${sortMeth}`);
+        let sortNumParam = req.query.sortNum;
+        const sortNum = Number(sortNumParam);
+        console.log(`Method is ${sortMeth} and ${sortNum}`);
         const mergedArray = this.productsPagesArr.reduce((acc, curr) => acc.concat(curr), []);
         const sortedArray = mergedArray.sort((a, b)=> {
             if(a[sortMeth] > b[sortMeth]) {
-                return 1;
-            }
-            if(a[sortMeth] == b[sortMeth]) {
-                return 0;
+                console.log(`${a[sortMeth]} > ${b[sortMeth]}`);
+                return sortNum;
             }
             if(a[sortMeth] < b[sortMeth]) {
-                return -1;
-            } else {
-                return 0;
+                console.log(`${a[sortMeth]} < ${b[sortMeth]}`);
+                return -sortNum;
             }
+            console.log(`${a[sortMeth]} === ${b[sortMeth]}`);
+            return 0;
         });
         this.productsPagesArr = [];
         for(let i = 0; i < sortedArray.length; i += 20) {
             this.productsPagesArr.push(sortedArray.slice(i, i+20));
         }
-        res.redirect(req.originalUrl);
+        console.log('Len is ' + this.productsPagesArr.length);
+        res.send(this.productsPagesArr[0]);
     }
 }

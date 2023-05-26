@@ -38,13 +38,15 @@ export class UserPageController extends BaseController implements IUserPageContr
         this.bindRoutes(this.userPageMethods);
     }
 
-    public userPageFunc(req: Request, res: Response, next: NextFunction): void {
-        req.body
+    public async userPageFunc(req: Request, res: Response, next: NextFunction): Promise<void> {
+        req.body.email = get(req, 'user.email');
+        let authUser = await this.userService.getInfoUser(req.body.email);
         console.log('User-page render');
         res.render('user-page', {
             surname: get(req, 'user.surname'),
             name: get(req, 'user.name'),
             email: get(req, 'user.email'),
+            cartItems: authUser?.cartItems.length
         });
     }
 

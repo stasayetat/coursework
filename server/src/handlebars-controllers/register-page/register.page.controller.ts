@@ -43,7 +43,7 @@ export class RegisterPageController extends BaseController implements IRegisterP
         }
         else {
             console.log('Register failed');
-            res.json({error: 'Email already registered'});
+            res.send({error: 'Email already registered'});
         }
 
     }

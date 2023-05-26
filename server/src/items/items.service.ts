@@ -7,6 +7,7 @@ import {ItemCreateDto} from "./dto/item.create.dto";
 import {TYPES} from "../types";
 import {IItemsRepository} from "./items.repository.interface";
 import {Category} from "./category.enum";
+import {MiniItem} from "./mini.item.entity";
 @injectable()
 export class ItemsService implements IItemsService {
 
@@ -15,7 +16,7 @@ export class ItemsService implements IItemsService {
 
     async createItem(item: ItemCreateDto): Promise<Item | null> {
         console.log(`Creating item in service`)
-        const newItem = new Item(item.title, item.category, item.price, item.photos, item.characteristics);
+        const newItem = new Item(item.title, item.category, item.price, item.photos, item.characteristics, item.reviews);
         const existedItemList = await this.itemsRepository.findByName(item.title);
         console.log(existedItemList);
         if(Array.isArray(existedItemList)) {
@@ -24,8 +25,7 @@ export class ItemsService implements IItemsService {
                 return null;
             }
         } else if (existedItemList === null) {
-            console.log('Return null');
-            return null;
+            return this.itemsRepository.create(newItem);
         }
         return this.itemsRepository.create(newItem);
     }
@@ -57,6 +57,45 @@ export class ItemsService implements IItemsService {
             }
         }
         return undefined;
+    }
+
+   async getItemsLimit(name: string, limit: number, type: string): Promise<MiniItem[] | null> {
+       let newItems: Item | Item[] | null = [];
+        if(type === 'name')
+            newItems = await this.itemsRepository.findByName(name, limit);
+        else {
+            const catName = this.getEnumFromString(name);
+            if(catName)
+                newItems = await this.itemsRepository.findByCategory(catName, limit);
+            else
+                return null;
+        }
+
+        let newCreatedItems: MiniItem[] = [];
+        if(Array.isArray(newItems)) {
+            newCreatedItems = newItems.map((item)=> {
+                return new MiniItem(item.title,item.photos[0],item.price);
+            });
+        } else if(newItems) {
+            newCreatedItems.push(new MiniItem(newItems.title,newItems.photos[0],newItems.price));
+        }
+        return newCreatedItems;
+    }
+
+    getOneItem(itemName: string): Promise<Item | null> {
+        return this.itemsRepository.findOneByName(itemName);
+    }
+
+    async itemToMiniItem(cartItems: string[]): Promise<MiniItem[]> {
+        let miniItemsArr: MiniItem[] = [];
+        for(let el of cartItems) {
+            const mapItem = await this.getOneItem(el);
+            if (mapItem)
+                miniItemsArr.push(new MiniItem(el, mapItem?.photos[0], mapItem?.price));
+            else
+                miniItemsArr.push(new MiniItem('item', 'photo', 123));
+        }
+        return miniItemsArr;
     }
 
 }

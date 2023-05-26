@@ -7,8 +7,8 @@ import {IMainPageController} from "./handlebars-controllers/main-page/main.page.
 import {MainPageController} from "./handlebars-controllers/main-page/main.page.controller";
 import {IProductPageController} from "./handlebars-controllers/product-page/product.page.controller.interface";
 import {ProductPageController} from "./handlebars-controllers/product-page/product.page.controller";
-import {ReviewController} from "./handlebars-controllers/reviews/review.controller";
-import {IReviewController} from "./handlebars-controllers/reviews/review.controller.interface";
+import {ReviewController} from "./items/reviews/review.controller";
+import {IReviewController} from "./items/reviews/review.controller.interface";
 import {ISearchPageController} from "./handlebars-controllers/search-product/search.page.controller.interface";
 import {SearchPageController} from "./handlebars-controllers/search-product/search.page.controller";
 import {IRegisterPageController} from "./handlebars-controllers/register-page/register.page.controller.interface";
@@ -35,6 +35,17 @@ import {IItemsRepository} from "./items/items.repository.interface";
 import {ItemsRepository} from "./items/items.repository";
 import {IItemController} from "./items/item.controller.interface";
 import {ItemController} from "./items/item.controller";
+import {IReviewService} from "./items/reviews/review.service.interface";
+import {ReviewService} from "./items/reviews/review.service";
+import {IOrderPageService} from "./handlebars-controllers/order-page/order.page.service.interface";
+import {OrderPageService} from "./handlebars-controllers/order-page/order.page.service";
+import {CheckAuthMiddleware} from "./common/check.auth.middleware";
+import {IUserPageSavedService} from "./handlebars-controllers/user-page-saved/user.page.saved.service.interface";
+import {UserPageSavedService} from "./handlebars-controllers/user-page-saved/user.page.saved.service";
+import {IOrderRepository} from "./orders/order.repository.interface";
+import {OrderRepository} from "./orders/order.repository";
+import {IOrderService} from "./orders/order.service.interface";
+import {OrderService} from "./orders/order.service";
 
 config();
 const myContainer = new Container();
@@ -54,6 +65,12 @@ myContainer.bind<IOrderPageController>(TYPES.IOrderPageController).to(OrderPageC
 myContainer.bind<IItemsService>(TYPES.IItemsService).to(ItemsService).inSingletonScope();
 myContainer.bind<IItemsRepository>(TYPES.IItemsRepository).to(ItemsRepository).inSingletonScope();
 myContainer.bind<IItemController>(TYPES.IItemController).to(ItemController).inSingletonScope();
+myContainer.bind<IReviewService>(TYPES.IReviewService).to(ReviewService).inSingletonScope();
+myContainer.bind<IOrderPageService>(TYPES.IOrderPageService).to(OrderPageService).inSingletonScope();
+myContainer.bind<CheckAuthMiddleware>(TYPES.CheckAuthMiddleware).to(CheckAuthMiddleware).inSingletonScope();
+myContainer.bind<IUserPageSavedService>(TYPES.IUserPageSavedService).to(UserPageSavedService).inSingletonScope();
+myContainer.bind<IOrderRepository>(TYPES.IOrderRepository).to(OrderRepository).inSingletonScope();
+myContainer.bind<IOrderService>(TYPES.IOrderService).to(OrderService).inSingletonScope();
 myContainer.bind<App>(TYPES.App).to(App).inSingletonScope();
 
 const app = myContainer.get<App>(TYPES.App);

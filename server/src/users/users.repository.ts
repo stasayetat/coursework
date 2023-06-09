@@ -27,7 +27,6 @@ export class UsersRepository implements IUsersRepository{
         this.dataUser = this.mongooseService.mongoose.model('User', this.userSchema);
     }
     async create(user: User): Promise<User | null> {
-        console.log(`Create function in users repository here`);
         const newUser = new this.dataUser({
             email: user.email,
             password: user.password
@@ -91,13 +90,21 @@ export class UsersRepository implements IUsersRepository{
     }
 
     async deleteItemsFromSaved(email: string, itemName: string): Promise<User | null> {
-        // const deletedSavedUsers = await this.dataUser.findOneAndUpdate({email: email}, {
-        //     $pull: {savedItems: itemName}
-        // });
-        // return deletedSavedUsers;
-        return null;
+        const deletedSavedUsers = await this.dataUser.findOneAndUpdate({email: email}, {
+            $pull: {savedItems: itemName}
+        });
+        return deletedSavedUsers;
     }
 
-
-
+    async itemCheckFromSaved(email: string, itemName: string): Promise<boolean> {
+        const ifItemSaved = await this.dataUser.findOne({
+            email: email,
+            savedItems: {$in: [itemName]}
+        });
+        if(ifItemSaved) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

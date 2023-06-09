@@ -11,4 +11,5 @@ export interface IUsersRepository {
     deleteItemFromCart: (email: string, itemName: string)=> Promise<User | null>;
     deleteItemsFromSaved: (email: string, itemName: string)=> Promise<User | null>;
     deleteAllItemFromCart: (email: string)=> Promise<User | null>;
+    itemCheckFromSaved: (email: string, itemName: string)=> Promise<boolean>;
 }

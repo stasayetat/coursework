@@ -9,4 +9,5 @@ export interface IUsersService {
     getInfoUser: (email: string)=> Promise<User | null>;
     getInfoUserById: (id: number)=> Promise<User | null>;
     updateUserInformation: (userDto: UserUpdateInfoDto)=> Promise<User | null>;
+    checkItemSaved: (email: string, name: string)=> Promise<boolean>;
 }

@@ -29,7 +29,8 @@ export class UserPageSavedService implements IUserPageSavedService {
     }
 
     async deleteSavedItem(email: string, itemName: string): Promise<User | null> {
-        return null;
+        console.log('deleteSavedItem');
+        return this.usersRepository.deleteItemsFromSaved(email, itemName);
     }
 
     async getSavedItems(email: string): Promise<MiniItem[] | null> {

@@ -63,6 +63,8 @@ export class UsersService implements IUsersService {
         console.log(JSON.stringify(updatedUser));
         return this.usersRepository.update(updatedUser);
     }
-
+    async checkItemSaved(email: string, name: string): Promise<boolean> {
+        return this.usersRepository.itemCheckFromSaved(email, name);
+    }
 
 }

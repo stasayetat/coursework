@@ -64,7 +64,12 @@
             <div id="followButton">
                 <button type="button" class="btn bg-body-secondary" data-bs-toggle="button">
                     <span class="fs-4 fw-bolder">Follow</span>
-                    <img class="" src="/src/img/heart-regular.svg" alt="Heart" width="50" height="50" class="ms-2" id="heart">
+                    <%if(itemSavedUser){ %>
+                        <img class="" src="/src/img/heart-solid.svg" alt="Heart" width="50" height="50" class="ms-2" id="heart">
+                    <%} else{ %>
+                        <img class="" src="/src/img/heart-regular.svg" alt="Heart" width="50" height="50" class="ms-2" id="heart">
+                    <%}%>
+
                 </button>
             </div>
         </div>

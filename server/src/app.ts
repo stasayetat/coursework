@@ -1,17 +1,12 @@
 import 'reflect-metadata';
 import {inject, injectable} from "inversify";
 import express, {Express} from "express";
-import { Server } from 'http';
 import {TYPES} from "./types";
 import * as path from "path";
 import {IMainPageController} from "./handlebars-controllers/main-page/main.page.controller.interface";
-import {MainPageController} from "./handlebars-controllers/main-page/main.page.controller";
-import {ProductPageController} from "./handlebars-controllers/product-page/product.page.controller";
-import {ReviewController} from "./items/reviews/review.controller";
 import {IReviewController} from "./items/reviews/review.controller.interface";
 import {IProductPageController} from "./handlebars-controllers/product-page/product.page.controller.interface";
 import {json, urlencoded} from "body-parser";
-import {SearchPageController} from "./handlebars-controllers/search-product/search.page.controller";
 import {ISearchPageController} from "./handlebars-controllers/search-product/search.page.controller.interface";
 import {IRegisterPageController} from "./handlebars-controllers/register-page/register.page.controller.interface";
 import {ILoginPageController} from "./handlebars-controllers/login-page/login.page.controller.interface";

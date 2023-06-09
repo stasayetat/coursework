@@ -23,7 +23,7 @@ export class UserPageSavedController extends BaseController implements IUserPage
         {
             path: '/saved/refresh',
             func: this.updateSavedItems,
-            method: 'get',
+            method: 'delete',
         },
 
         {
@@ -50,31 +50,16 @@ export class UserPageSavedController extends BaseController implements IUserPage
             savedItems: savedItems,
             email: authUser?.email,
             cartItems: authUser?.cartItems.length
-                // [
-                // {
-                //     photoSrc: '/src/items/U0456349.webp',
-                //     title: 'Фрейм-перехідник Apacer 41.07185.2400B',
-                //     price: '899',
-                // },
-                //
-                // {
-                //     photoSrc: '/src/items/U0489262.webp',
-                //     title: 'Батарея універсальна Xiaomi Redmi',
-                //     price: '6487',
-                //
-                // },
-                //
-                // {
-                //     photoSrc: '/src/items/U0744424.webp',
-                //     title: 'Фрейм-перехідник Apacer 41.07185.2400B',
-                //     price: '173',
-                // }
-            // ]
         });
     }
 
     async updateSavedItems(req: Request, res: Response, next: NextFunction): Promise<void> {
+        req.body.email = get(req, 'user.email');
+        console.log('updateSavedItems', req.body.email, req.query.name);
         //Потрібно оновити лист вподобань користувача req.body.savedItemsList
+        await this.userPageSavedService.deleteSavedItem(req.body.email, req.query.name as string);
+        res.send('Item deleted');
+        return;
 
     }
 

@@ -4,11 +4,8 @@ import 'reflect-metadata';
 import {IMainPageController} from "./main.page.controller.interface";
 import {IControllerRoute} from "../../common/route.interface";
 import {NextFunction, Request, Response} from "express";
-import {get} from "lodash";
 import {TYPES} from "../../types";
-import {IItemsRepository} from "../../items/items.repository.interface";
 import {IItemsService} from "../../items/items.service.interface";
-import {MiniItem} from "../../items/mini.item.entity";
 import {CheckAuthMiddleware} from "../../common/check.auth.middleware";
 @injectable()
 export class MainPageController extends BaseController implements IMainPageController{
@@ -21,8 +18,7 @@ export class MainPageController extends BaseController implements IMainPageContr
         }
     ];
 
-    constructor(@inject(TYPES.IItemsRepository) private itemsRepository: IItemsRepository,
-                @inject(TYPES.IItemsService) private itemsService: IItemsService,
+    constructor(@inject(TYPES.IItemsService) private itemsService: IItemsService,
                 @inject(TYPES.CheckAuthMiddleware) private checkAuthMiddleware: CheckAuthMiddleware,
                 ) {
         super();

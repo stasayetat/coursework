@@ -36,7 +36,8 @@ let UserPageSavedService = class UserPageSavedService {
         }
     }
     async deleteSavedItem(email, itemName) {
-        return null;
+        console.log('deleteSavedItem');
+        return this.usersRepository.deleteItemsFromSaved(email, itemName);
     }
     async getSavedItems(email) {
         console.log('Getting items');

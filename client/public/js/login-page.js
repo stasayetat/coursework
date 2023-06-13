@@ -4,4 +4,5 @@ form.addEventListener('submit', (e)=> {
         e.preventDefault();
     }
     form.classList.add('was-validated');
+    form.submit();
 });

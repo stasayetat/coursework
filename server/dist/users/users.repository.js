@@ -33,7 +33,6 @@ let UsersRepository = class UsersRepository {
         this.dataUser = this.mongooseService.mongoose.model('User', this.userSchema);
     }
     async create(user) {
-        console.log(`Create function in users repository here`);
         const newUser = new this.dataUser({
             email: user.email,
             password: user.password
@@ -87,7 +86,22 @@ let UsersRepository = class UsersRepository {
         return deletedCartUsers;
     }
     async deleteItemsFromSaved(email, itemName) {
-        return null;
+        const deletedSavedUsers = await this.dataUser.findOneAndUpdate({ email: email }, {
+            $pull: { savedItems: itemName }
+        });
+        return deletedSavedUsers;
+    }
+    async itemCheckFromSaved(email, itemName) {
+        const ifItemSaved = await this.dataUser.findOne({
+            email: email,
+            savedItems: { $in: [itemName] }
+        });
+        if (ifItemSaved) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 };
 UsersRepository = __decorate([

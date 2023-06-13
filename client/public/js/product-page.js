@@ -20,73 +20,25 @@ const buyToast = document.getElementById('buyToast');
 const cartItem = document.getElementById('cartItem');
 
 buyButton.addEventListener('click', async (e)=> {
+    if(buyButton.innerText === 'Оформити замовлення') {
+        window.location.href = '/orders';
+        return;
+    }
     buyToast.querySelector('#itemNameToast').innerText = document.querySelector('#itemName').innerText;
     buyToast.classList.add('show');
     cartItem.innerText = Number(cartItem.innerText.split('\n')[0])+1;
-    await axios.post('/order/add', document.querySelector('#itemName').innerText);
-});
-
-const moreRevButton = document.querySelector('#moreRevButton');
-const allReviews = document.querySelector('#allReviews');
-moreRevButton.addEventListener('click', async ()=> {
-    const allGetRevs = await axios.get(`reviews/all?id=${id}`);
-    moreRevButton.remove();
-    for(let el of allGetRevs) {
-        const div = document.createElement('div');
-        const rate = el.rate;
-        div.innerHTML = `    <div class="container bg-body-secondary rounded">
-        <div class="row">
-            <div class="col-auto mt-3">
-                <span class="ms-2 fs-5">${el.name} ${el.surname}</span>
-            </div>
-            <div class="col-auto mt-2">
-                <ul class="star_rating ps-0" id="starRatingNumber">
-<!--                    <i class="bi-star-fill fs-4"></i>-->
-<!--                    <i class="bi-star-fill fs-4"></i>-->
-<!--                    <i class="bi-star-fill fs-4"></i>-->
-<!--                    <i class="bi-star-fill fs-4"></i>-->
-<!--                    <i class="bi-star-fill fs-4"></i>-->
-                </ul>
-            </div>
-            <div class="col-auto mt-3">
-                <span class="ms-2 fs-5">${el.date}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-control">
-                    ${el.message}
-                </div>
-
-                <div class="mt-3 mb-3">
-                    <span class="fs-4 fw-bold">Плюси</span>
-                    <div class="form-control mt-1">
-                        ${el.adv}
-                    </div>
-                </div>
-
-                <div class="mt-3 mb-3">
-                    <span class="fs-4 fw-bold">Мінуси</span>
-                    <div class="form-control mt-1">
-                        ${el.disAdv}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-        const rateUl = div.querySelector('#starRatingNumber');
-        for(let i = 0; i < 5; i++) {
-            let curRat = document.createElement('li');
-            if(i < rate) {
-                curRat.innerHTML = '<i class="bi-star-fill fs-4 golden-star"></i>';
-            } else {
-                curRat.innerHTML = '<i class="bi-star-fill fs-4"></i>';
-            }
-            rateUl.appendChild(curRat);
+    const qwe = await axios.post('/orders/add', {
+        params: {
+            name: document.querySelector('#itemName').innerText
         }
-        allReviews.appendChild(div);
+    });
+    if(qwe.request.responseURL === 'http://localhost:8000/login') {
+        window.location.href = '/login';
+    } else if (qwe.request.response === document.querySelector('#itemName').innerText){
+        buyButton.innerText = 'Оформити замовлення';
     }
 });
+
 
 const reviewForm = document.querySelector('#reviewForm');
 reviewForm.addEventListener('submit', async (e)=> {
@@ -101,25 +53,41 @@ reviewForm.addEventListener('submit', async (e)=> {
     reviewForm.classList.add('was-validated');
     const formData = new FormData(reviewForm);
     formData.append('itemTitle', document.querySelector('#itemName').innerText);
-    await axios.post('/reviews/add', formData);
+    await axios.post('/reviews/add', formData, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
     e.preventDefault();
 });
 
 const followButton = document.querySelector('#followButton');
-followButton.addEventListener('click', async ()=> {
-    let heart = followButton.querySelector('#heart');
-    heart.classList.contains('followed') ? heart.classList.remove('followed') : heart.classList.add('followed');
-    const followHeart = followButton.querySelector('.followed');
-    if(followHeart) {
-        heart.src = "/src/img/heart-solid.svg";
+followButton.addEventListener('click', async (e)=> {
+    if(document.querySelector('#userName')) {
+        let heart = followButton.querySelector('#heart');
+        heart.classList.contains('followed') ? heart.classList.remove('followed') : heart.classList.add('followed');
+        const followHeart = followButton.querySelector('.followed');
+        if(followHeart) {
+            heart.src = "/src/img/heart-solid.svg";
+        } else {
+            heart.src = "/src/img/heart-regular.svg";
+        }
     } else {
-        heart.src = "/src/img/heart-regular.svg";
+        window.location.href = '/login';
+        e.preventDefault();
     }
+
 });
 
 
 
-window.addEventListener('beforeunload', (e)=> {
+window.addEventListener('beforeunload', async (e)=> {
     let heart = followButton.querySelector('#heart');
-    heart.classList.contains('followed') ? axios.post('/followed/add', document.querySelector('#itemName')) : null;
+    if(heart.classList.contains('followed')) {
+        const qwe = await axios.post('/users/saved/add', {
+            params: {
+                name: document.querySelector('#itemName').innerText
+            }
+        });
+    }
 });

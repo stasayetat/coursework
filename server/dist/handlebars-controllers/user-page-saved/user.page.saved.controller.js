@@ -35,7 +35,7 @@ let UserPageSavedController = class UserPageSavedController extends base_control
             {
                 path: '/saved/refresh',
                 func: this.updateSavedItems,
-                method: 'get',
+                method: 'delete',
             },
             {
                 path: '/saved/add',
@@ -57,6 +57,11 @@ let UserPageSavedController = class UserPageSavedController extends base_control
         });
     }
     async updateSavedItems(req, res, next) {
+        req.body.email = (0, lodash_1.get)(req, 'user.email');
+        console.log('updateSavedItems', req.body.email, req.query.name);
+        await this.userPageSavedService.deleteSavedItem(req.body.email, req.query.name);
+        res.send('Item deleted');
+        return;
     }
     async addSavedItem(req, res, next) {
         console.log(`Request ${(0, lodash_1.get)(req, 'user.email')} on ${req.body.params.name}`);

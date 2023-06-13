@@ -19,11 +19,12 @@ require("reflect-metadata");
 const types_1 = require("../../types");
 const check_auth_middleware_1 = require("../../common/check.auth.middleware");
 let ProductPageController = class ProductPageController extends base_controller_1.BaseController {
-    constructor(itemsRepository, itemsService, checkAuthMiddleware) {
+    constructor(itemsRepository, itemsService, checkAuthMiddleware, usersService) {
         super();
         this.itemsRepository = itemsRepository;
         this.itemsService = itemsService;
         this.checkAuthMiddleware = checkAuthMiddleware;
+        this.usersService = usersService;
         this.productPageMethod = [
             {
                 path: '/:id',
@@ -36,11 +37,9 @@ let ProductPageController = class ProductPageController extends base_controller_
     }
     async productPageFunc(req, res, next) {
         console.log('Product-page render ' + req.params.id);
-        let authUser;
-        if (req.body.userAuth) {
-            authUser = req.body.userAuth;
-        }
         const findItem = await this.itemsRepository.findOneByName(req.params.id);
+        let itemSavedUser = false;
+        let authUser;
         if (Array.isArray(findItem)) {
             res.send('Предметів забагато');
             return;
@@ -51,6 +50,10 @@ let ProductPageController = class ProductPageController extends base_controller_
         }
         else {
             let simCreatedItems = await this.itemsService.getItemsLimit(findItem.category, 5, 'category');
+            if (req.body.userAuth) {
+                authUser = req.body.userAuth;
+                itemSavedUser = await this.usersService.checkItemSaved(authUser?.email, findItem.title);
+            }
             res.render('product-page', {
                 username: authUser?.email,
                 itemName: findItem.title,
@@ -59,7 +62,8 @@ let ProductPageController = class ProductPageController extends base_controller_
                 reviews: findItem.reviews,
                 itemCarouselImages: findItem.photos,
                 simItems: simCreatedItems,
-                cartItems: authUser?.cartItems.length
+                cartItems: authUser?.cartItems.length,
+                itemSavedUser: itemSavedUser
             });
         }
     }
@@ -69,7 +73,8 @@ ProductPageController = __decorate([
     __param(0, (0, inversify_1.inject)(types_1.TYPES.IItemsRepository)),
     __param(1, (0, inversify_1.inject)(types_1.TYPES.IItemsService)),
     __param(2, (0, inversify_1.inject)(types_1.TYPES.CheckAuthMiddleware)),
-    __metadata("design:paramtypes", [Object, Object, check_auth_middleware_1.CheckAuthMiddleware])
+    __param(3, (0, inversify_1.inject)(types_1.TYPES.IUsersService)),
+    __metadata("design:paramtypes", [Object, Object, check_auth_middleware_1.CheckAuthMiddleware, Object])
 ], ProductPageController);
 exports.ProductPageController = ProductPageController;
 //# sourceMappingURL=product.page.controller.js.map

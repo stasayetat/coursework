@@ -27,8 +27,13 @@ realDecButts.forEach((item)=> {
 });
 
 realCloseButts.forEach((item)=> {
-    item.addEventListener('click', ()=> {
+    item.addEventListener('click', async ()=> {
         let thisItem = item.closest('.bt-item');
+        const res = await axios.delete('/orders/delete', {
+            params: {
+                name: thisItem.querySelector('.itemName').innerText
+            }
+        });
         thisItem.remove();
         if(boughtItems.childElementCount < 2) {
             const spanElement = document.createElement('span');
@@ -47,22 +52,37 @@ form.addEventListener('submit', async (e)=> {
         e.preventDefault();
         form.classList.add('was-validated');
     } else {
-        const products = [];
+        e.preventDefault();
+        const items = [];
         const btItemElements = document.getElementsByClassName('bt-item');
         for(let el of btItemElements) {
-            const product = {
-                itemName: el.querySelector('.itemName').innerText,
-                itemAmount: el.querySelector('.itemAmount').value
-            }
-            products.push(product)
+            const item = [el.querySelector('.itemName').innerText,
+                el.querySelector('.itemAmount').value]
+            items.push(item)
         }
         const formData = new FormData(form);
-        formData.append('products', JSON.stringify(products));
-        for(let [name, value] of formData) {
-            alert(`${name} = ${value}`); // key1 = value1, then key2 = value2
+        formData.append('items', JSON.stringify(items));
+        // formData.append('items', items);
+        const formDataObject = {};
+        for (let [name, value] of formData) {
+            formDataObject[name] = value;
+            console.log(`Name ${name} - value ${value}`);
         }
-        await axios.post('/order', formData);
-        e.preventDefault();
+        const res = await axios.post('/orders', formDataObject);
+        console.log(res);
+        if(res.request.response === 'Order created') {
+            window.location.href = '/users/orders';
+        }
+
     }
 
+});
+
+window.addEventListener('beforeunload', (e)=> {
+    let allSavedItems = document.querySelectorAll('.bt-item');
+    let savedItemsList = [];
+    allSavedItems.forEach((item)=> {
+        savedItemsList.push(item.innerText);
+    });
+    axios.delete('orders/refresh', savedItemsList);
 });

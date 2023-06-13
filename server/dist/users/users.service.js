@@ -72,6 +72,9 @@ let UsersService = class UsersService {
         console.log(JSON.stringify(updatedUser));
         return this.usersRepository.update(updatedUser);
     }
+    async checkItemSaved(email, name) {
+        return this.usersRepository.itemCheckFromSaved(email, name);
+    }
 };
 UsersService = __decorate([
     (0, inversify_1.injectable)(),

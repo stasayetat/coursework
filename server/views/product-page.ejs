@@ -26,13 +26,13 @@
         <div class="col-6">
             <div id="carouselImageItem" class="carousel slide carousel-dark">
                 <div class="carousel-inner bg-secondary border">
-                    <div class="carousel-item active itemImage">
-                        <img src="<%=itemCarouselImages[0]%>" alt="Logo" class="d-block w-100">
+                    <div class="carousel-item active itemImage image-size">
+                        <img src="<%=itemCarouselImages[0]%>" alt="Logo" class="d-block w-100" height="600" width="300">
                     </div>
 
                     <% for(let i = 1; i < itemCarouselImages.length; i++) {%>
-                    <div class="carousel-item itemImage">
-                            <img src="<%=itemCarouselImages[i]%>" alt="Logo" class="d-block w-100">
+                    <div class="carousel-item itemImage image-size">
+                            <img src="<%=itemCarouselImages[i]%>" alt="Logo" class="d-block w-100" height="600" width="300">
                     </div>
                     <%} %>
 

@@ -56,7 +56,7 @@ export class UserPageController extends BaseController implements IUserPageContr
             await this.userService.updateUserInformation(req.body);
             res.redirect('/users');
         } else {
-            res.json({error: 'Bad password'});
+            res.status(404).json({error: 'Bad password'});
         }
     }
 

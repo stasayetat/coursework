@@ -25,8 +25,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 50px; /* задайте розмір кнопки відповідно до розмірів зображення */
-    height: 50px;
+    width: 40px; /* задайте розмір кнопки відповідно до розмірів зображення */
+    height: 40px;
 }
 
 .icon_user {

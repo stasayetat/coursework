@@ -16,7 +16,14 @@ export class UserPageOrdersController extends BaseController implements IUserPag
             func: this.userPageOrders,
             method: 'get',
             middlewares: [new AuthMiddleware()]
-        }
+        },
+
+        {
+            path: '/orders/update',
+            func: this.updateOrderStatus,
+            method: 'post',
+            middlewares: []
+        },
     ];
 
     constructor(@inject(TYPES.IUsersService) private userService: IUsersService,
@@ -34,6 +41,19 @@ export class UserPageOrdersController extends BaseController implements IUserPag
             surname: get(req, 'user.surname'),
             cartItems: authUser?.cartItems.length
         });
+    }
+
+    async updateOrderStatus(req: Request, res: Response, next: NextFunction): Promise<void> {
+        const orderNumber = req.body.orderNumber;
+        const newStatus = req.body.newStatus;
+        console.log(newStatus);
+        const resOrder = await this.orderService.updateOrderStatus(newStatus, orderNumber);
+        console.log(JSON.stringify(resOrder));
+        if(resOrder === undefined) {
+            res.status(404).send('Order not found');
+        } else {
+            res.status(200).send('Status changed');
+        }
     }
 
 }

@@ -41,4 +41,8 @@ export class OrderService implements IOrderService {
         return resNumber;
     }
 
+    async updateOrderStatus(status: string, orderNumber: number): Promise<Order | null> {
+        return this.orderRepository.updateOrderStatus(status, orderNumber);
+    }
+
 }

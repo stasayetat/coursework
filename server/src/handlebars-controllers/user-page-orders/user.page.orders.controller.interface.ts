@@ -5,4 +5,5 @@ export interface IUserPageOrdersController {
     router: Router;
     bindRoutes: (routes: IControllerRoute[])=> void;
     userPageOrders: (req: Request, res: Response, next: NextFunction)=> Promise<void>;
+    updateOrderStatus: (req: Request, res: Response, next: NextFunction)=> Promise<void>;
 }

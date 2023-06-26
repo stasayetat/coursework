@@ -48,8 +48,9 @@ export class OrderRepository implements IOrderRepository {
     }
 
     async updateOrderStatus(status: string, orderNumber: number): Promise<Order | null> {
-        return this.dataOrder.findOneAndUpdate({orderNumber: orderNumber}, {
-            $set: {status: status},
+        return this.dataOrder.findOneAndUpdate({orderNumber: orderNumber},
+            {
+            $set: {orderStatus: status},
         })
     }
 
